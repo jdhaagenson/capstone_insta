@@ -4,7 +4,7 @@ from instauser.models import InstaUser
 
 
 def user_path(instance, filename):
-    return f'user_{instance.instauser.id}/{filename}'
+    return f'user_{instance.instauser.pk}/{filename}'
 
 
 class Post(models.Model):
@@ -17,5 +17,5 @@ class Post(models.Model):
     instauser = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.instauser}.post-{self.id}'
+        return f'{self.instauser}.post-{self.pk}'
 
