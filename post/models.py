@@ -1,5 +1,6 @@
 from django.utils import timezone
 from django.db import models
+from instauser.models import InstaUser
 
 
 def user_path(instance, filename):
@@ -13,3 +14,8 @@ class Post(models.Model):
     location = models.CharField(max_length=100, null=True, blank=True)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
+    instauser = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.instauser}.post-{self.id}'
+
