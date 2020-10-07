@@ -6,6 +6,8 @@ authors = ["Jordan Haagenson <jdhaagenson@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8.5"
 django = "^3.1.2"
+black = "^20.8b1"
+django-material = "^1.7.1"
 
 [tool.poetry.dev-dependencies]
 
