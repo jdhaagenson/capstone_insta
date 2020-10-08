@@ -124,5 +124,16 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    '/post/static/',
+    BASE_DIR / 'post/static',
+]
+
+AUTH_USER_MODEL = 'instauser.InstaUser'
+
+LOGIN_URL = '/login/'
+
+LOGOUT_REDIRECT_URL = '/'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.AllowAllUsersModelBackend'
 ]
