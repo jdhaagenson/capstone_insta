@@ -5,6 +5,7 @@ from django.views import View
 from django.views.generic import DetailView, CreateView, FormView, TemplateView, ListView, DeleteView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from instauser.models import InstaUser
 
 
 class PostFeedView(View):
@@ -17,7 +18,7 @@ class PostFeedView(View):
 
 class PostFormView(CreateView):
     form_class = PostForm
-    template_name = 'form.html'
+    template_name = 'edit.html'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
@@ -37,15 +38,17 @@ class PostFormView(CreateView):
         return render(request, self.template_name, {'form': form})
 
 
-def PostsByUserView(request, userid):
+def ProfileView(request, userid):
+    user = InstaUser.objects.get(pk=userid)
     posts = Post.objects.filter(instauser_id=userid)
-    return render(request, 'profile.html', {'posts': posts})
+    return render(request, 'profile.html', {'user': user, 'posts': posts})
 
 
 def PostDetailView(request, postid):
     post = Post.objects.get(pk=postid)
-    return render(request, 'detail.html', {'post': post})
+    return render(request, 'detail.html', {'post.html': post})
 
 
-def PostsByFollowers(request):
+def FollowPostView(request):
     posts = Post.objects.filter(instauser_id=request.user.following)
+
