@@ -65,3 +65,15 @@ def FollowPostView(request):
     })
 
 
+def like_post(request, postid):
+    post = Post.objects.get(pk=postid)
+    post.likes += 1
+    post.save()
+    return HttpResponseRedirect('post_details')
+
+
+def dislike_post(request, postid):
+    post = Post.objects.get(pk=postid)
+    post.dislikes += 1
+    post.save()
+    return HttpResponseRedirect('post_details')
