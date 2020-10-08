@@ -14,8 +14,8 @@ class Post(models.Model):
     location = models.CharField(max_length=100, null=True, blank=True)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
-    instauser = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
+    author = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.instauser}.post-{self.pk}'
+        return f'{self.author}.post-{self.pk}'
 

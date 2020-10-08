@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect,reverse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from instauser.models import InstaUser
-from authentication.forms import LoginForm, AddUserForm
+from .forms import LoginForm, AddUserForm
 from django.views.generic import TemplateView
 
 
@@ -36,6 +36,7 @@ def login_view(request):
     return render(request, "form.html", {"form": form})
 
 
+@login_required
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("homepage"))

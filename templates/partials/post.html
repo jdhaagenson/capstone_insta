@@ -1,0 +1,9 @@
+{% for post in posts %}
+<div>
+    <h2>{{ post.display_name }}</h2>
+    <h4>@{{ post.username }}</h4>
+    <img src="{{ post.photo }}" alt="photo">
+    
+</div>
+
+{% endfor %}

@@ -17,8 +17,23 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from instauser.views import *
+from post.views import *
+from authentication.views import *
+
 
 urlpatterns = [
+    path('', PostFeedView.as_view(), name='homepage'),
+    path('flt/', FollowPostView, name='follow_feed'),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+    path('signup/', CreateUser.as_view(), name='create_user'),
+    path('follow/<int:userid>/', follow_user, name='follow'),
+    path('unfollow/<int:userid>/', unfollow_user, name='unfollow'),
+    path('post/<int:postid>/', PostDetailView, name='post_details'),
+    path('post/', PostFormView.as_view(), name='create_post'),
+    path('user/<int:userid>/', ProfileView, name='profile'),
+    # path('notifications/', ),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
