@@ -124,5 +124,5 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    '/post.html/static/',
+    '/post/static/',
 ]
