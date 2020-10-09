@@ -8,7 +8,7 @@ def user_path(instance, filename):
 
 
 class Post(models.Model):
-    photo = models.ImageField(upload_to=user_path, width_field=models.IntegerField, height_field=models.IntegerField, max_length=100)
+    photo = models.ImageField(upload_to="image")
     caption = models.CharField(max_length=250)
     date = models.DateTimeField(default=timezone.now)
     location = models.CharField(max_length=100, null=True, blank=True)

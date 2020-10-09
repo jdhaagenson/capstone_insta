@@ -32,16 +32,17 @@ class PostFormView(CreateView):
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
+            form.save()
             data = form.cleaned_data
-            Post.objects.create(
-                photo=data.get('photo'),
-                caption=data.get('caption'),
-                author=request.user,
-                location=data.get('location')
-            )
-            return HttpResponseRedirect('/feed/')
+            # Post.objects.create(
+            #     photo=data.get('photo'),
+            #     caption=data.get('caption'),
+            #     author=data.get('author'),
+            #     location=data.get('location')
+            # )
+            return HttpResponseRedirect(reverse('homepage'))
         return render(request, self.template_name, {'form': form})
 
 

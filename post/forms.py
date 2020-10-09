@@ -9,5 +9,6 @@ class PostForm(ModelForm):
             'photo',
             'caption',
             'location',
+            'author',
         ]
 

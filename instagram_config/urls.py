@@ -36,6 +36,8 @@ urlpatterns = [
     path('post/', PostFormView.as_view(), name='create_post'),
     path('user/<int:userid>/', ProfileView, name='profile'),
     # path('notifications/', ),
-    path('admin/', admin.site.urls),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('admin/', admin.site.urls), ]
+    
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

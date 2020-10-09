@@ -1,8 +1,8 @@
 {% for post in posts %}
 <div>
     <h2>{{ post.author.display_name }}</h2>
-    <h4>@{{ post.username }}</h4>
-    <img src="{{ post.photo }}" alt="photo">
+    <h4>@{{ post.author.username }}</h4>
+    <img src="{{ post.photo.url }}" alt="photo">
     <p>{{ post.caption }}</p>
     <p>{{ post.date }}</p>
     <a href="/like"></a>
