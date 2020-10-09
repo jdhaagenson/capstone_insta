@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 from django.views import View
 from django.views.generic import DetailView, CreateView, FormView, TemplateView, ListView, DeleteView
 from django.utils.decorators import method_decorator
@@ -55,8 +55,19 @@ def ProfileView(request, userid):
 
 @login_required
 def PostDetailView(request, postid):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form = form.cleaned_data
+            new_comment = Comment.objects.create(
+                text = form.get('text'),
+                creator = request.user,
+                post = Post.objects.get(id=postid)
+            )
+    form = CommentForm
+    comments = Comment.objects.all()
     post = Post.objects.get(pk=postid)
-    return render(request, 'details.html', {'post': post})
+    return render(request, 'details.html', {'post':post, 'form':form, 'comments':comments})
 
 
 @login_required
