@@ -7,12 +7,6 @@ from django.contrib.auth import get_user
 
 
 # Create your views here.
-class IndexView(LoginRequiredMixin, TemplateView):
-
-    def get(self, request):
-        my_user = InstaUser.objects.filter(username=request.user.username).first()
-        return render(request, "index.html", {"user": my_user})
-
 
 @login_required
 def follow_user(request, userid):
