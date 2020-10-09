@@ -6,6 +6,7 @@ from django.views.generic import DetailView, CreateView, FormView, TemplateView,
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from instauser.models import InstaUser
+from django.contrib.auth import get_user
 
 
 class PostFeedView(TemplateView):
@@ -13,7 +14,7 @@ class PostFeedView(TemplateView):
 
     @method_decorator(login_required)
     def get(self,request, *args, **kwargs):
-        user = InstaUser.objects.get(username=request.user)
+        user = get_user(request)
         posts = Post.objects.all()
         return render(request, self.template_name, {'user': user,
                                             'posts': posts
