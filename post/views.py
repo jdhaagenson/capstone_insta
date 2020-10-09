@@ -8,12 +8,16 @@ from django.contrib.auth.decorators import login_required
 from instauser.models import InstaUser
 
 
-class PostFeedView(View):
-    model = Post
+class PostFeedView(TemplateView):
+    template_name = "feed.html"
 
     @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
+    def get(self,request, *args, **kwargs):
+        user = InstaUser.objects.get(username=request.user)
+        posts = Post.objects.all()
+        return render(request, self.template_name, {'user': user,
+                                            'posts': posts
+        })
 
 
 class PostFormView(CreateView):
