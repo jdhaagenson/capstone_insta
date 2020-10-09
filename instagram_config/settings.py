@@ -129,6 +129,9 @@ STATICFILES_DIRS = [
 
 AUTH_USER_MODEL = 'instauser.InstaUser'
 
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL  = "/media/"
+
 LOGIN_URL = '/login/'
 
 LOGOUT_REDIRECT_URL = '/'
