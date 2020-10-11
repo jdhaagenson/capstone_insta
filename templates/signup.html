@@ -9,11 +9,17 @@
 </head>
 
 <body>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
-    </form>
+    <div class="loginbox">
+        <h1>Sign up</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Sign Up" />
+        </form>
+        <div>
+        <p style="display:inline;">Already have an account? </p><a style="display:inline;" href="/login/">Login</a>
+        </div>
+    </div>
 </body>
 
 </html>

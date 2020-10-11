@@ -10,9 +10,10 @@ from django.contrib.auth import get_user
 
 
 class PostFeedView(TemplateView):
+    """Home page view"""
     template_name = "feed.html"
 
-    @method_decorator(login_required)
+    # @method_decorator(login_required)
     def get(self,request, *args, **kwargs):
         user = get_user(request)
         posts = Post.objects.all()
@@ -22,6 +23,7 @@ class PostFeedView(TemplateView):
 
 
 class PostFormView(CreateView):
+    """Create a new post"""
     form_class = PostForm
     template_name = 'upload.html'
 
@@ -67,16 +69,18 @@ def PostDetailView(request, postid):
     return render(request, 'details.html', {'post':post, 'form':form, 'comments':comments})
 
 
-@login_required
-def FollowPostView(request):
-    user = InstaUser.objects.get(username=request.user)
-    followers = user.followers.all()
-    posts = Post.objects.filter(author__in=followers)
-    my_posts = Post.objects.filter(author=user).values()
-    posts = posts.union(my_posts).order_by('-date')
-    return render(request, 'feed.html', {'user': user,
-                                         'posts': posts
-    })
+class FollowPostView(TemplateView):
+    """Shows only the posts of people you are following, as well as your own."""
+    @method_decorator(login_required)
+    def get(self, request):
+        user = InstaUser.objects.get(username=request.user)
+        followers = user.followers.all()
+        posts = Post.objects.filter(author__in=followers)
+        my_posts = Post.objects.filter(author=user).values()
+        posts = posts.union(my_posts).order_by('-date')
+        return render(request, 'feed.html', {'user': user,
+                                             'posts': posts}
+                      )
 
 
 def like_post(request, postid):
@@ -105,31 +109,3 @@ def dislike_comment(request, commentid):
     comment.dislikes += 1
     comment.save()
     return HttpResponseRedirect(reverse('post_details'))
-
-# class PostDetailView(DetailView):
-#     """
-#     Post details as class view
-#     """
-#     form_class = CommentForm
-#     template_name = 'details.html'
-#
-#     @method_decorator(login_required)
-#     def get(self, request, postid):
-#         post = Post.objects.get(pk=postid)
-#         form = self.form_class()
-#         comments = Comment.objects.filter(post=postid)
-#         return render(request, self.template_name, {'form': form,
-#                                                     'post': post,
-#                                                     'comments': comments})
-#
-#     @method_decorator(login_required)
-#     def post(self, request, postid):
-#         form = self.form_class(request.POST)
-#         if form.is_valid():
-#             data = form.cleaned_data
-#             Comment.objects.create(
-#                 post=Post.objects.get(pk=postid),
-#                 creator=request.user,
-#                 text=data.get('text')
-#             )
-#             return HttpResponseRedirect(reverse('post_details'))

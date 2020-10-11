@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="../static/login.css">
 </head>
 <body>
-    
+    <div class="loginbox">
+        <h1>Login</h1>
+        <div class="error"></div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" />
+        </form>
+        <div>
+        <p style="display:inline;">New? Click </p><a style="display:inline;" href="/signup/">here</a><p style="display:inline;"> to sign up!</p>
+        </div>
+    </div>
 </body>
 </html>
