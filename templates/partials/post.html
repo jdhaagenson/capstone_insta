@@ -1,16 +1,16 @@
 {% for post in posts %}
-    <div>
+    <div class="post-container">
         <h2>{{ post.author.display_name }}</h2>
-        <h4>👤 @{{ post.username }}</h4>
+        <h4>👤 @{{ post.author.username }}</h4>
         <img class="postpic" src="{{ post.photo.url }}" alt="photo">
-        <p>{{ post.caption }}</p>
-        <p>{{ post.date }}</p>
+        <h4>{{ post.caption }}</h4>
+        <h5 role="doc-credit">{{ post.date }}</h5>
         <br>
-        <p>🧡 {{ post.likes }}</p>
-        <p>👎 {{ post.dislikes }}</p>
-        <div>
+        <section>🧡 {{ post.likes }}</section>
+        <section>👎 {{ post.dislikes }}</section>
+        <section>
             <a href="/like/">🧡Like</a>
             <a href="/dislike/">👎Dislike</a>
-        </div>
+        </section>
     </div>
 {% endfor %}

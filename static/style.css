@@ -1,5 +1,11 @@
 body {
-    background-image: url('/static/2.png')
+    background-image: url('/static/2.png');
+    display: grid;
+    grid-template:
+        "a b b b" auto
+        "a b b b" auto
+        "a b b b" auto / 20% 1fr 1fr
+
 }
 .postpic {
     max-width: 300px;
@@ -8,4 +14,11 @@ body {
     display: flex;
     image-rendering: crisp-edges;
     shape-image-threshold: auto;
+}
+
+.post-container {
+    display: grid;
+    background-color: coral;
+    margin: 20px;
+
 }
