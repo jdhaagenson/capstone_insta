@@ -1,0 +1,15 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="/static/form.css">
+</head>
+    <body>
+        <div id="toolbar">
+            {% include './partials/toolbar.html' %}
+        </div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

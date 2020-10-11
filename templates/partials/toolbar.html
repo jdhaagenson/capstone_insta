@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <nav id="navbar">
+        <div id="nav">
+        <ul class="navlist">
+            {% if not request.user.is_authenticated %}
+                <li><a href="/login/">Login</a></li>
+                <li><a href="/signup/">Sign Up</a></li>
+            {% elif request.user.is_authenticated %}
+                <li><a href="/logout/">Logout</a></li>
+                <li><a href="/">🏡Home</a></li>
+                <li><a href="/flt/">👣People I Follow</a></li>
+                <li><a href="/post/">Upload</a></li>
+                <li><a href="/user/{{ request.user.id }}/">My Profile</a></li>
+            {% endif %}
+        </ul>
+        </div>
+    </nav>
+</div>

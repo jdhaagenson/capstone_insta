@@ -6,13 +6,11 @@
     <title>Details</title>
     <link rel="stylesheet" href="../static/style.css"></head>
 <body>
+    <div id="toolbar">
+        {% include './partials/toolbar.html' %}
+    </div>
     <div>
-        <h2>{{ post.author.display_name }}</h2>
-        <h4>@{{ post.author.username }}</h4>
-        <img src="{{ post.photo.url }}" alt="photo">
-        <p>{{ post.caption }}</p>
-        <p>{{ post.date }}</p>
-        <a href="/like"></a>
+        {% include "./partials/post.html" %}
     </div>
     <div>
         <ul>

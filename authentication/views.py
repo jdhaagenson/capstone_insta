@@ -33,7 +33,7 @@ def login_view(request):
                 return HttpResponseRedirect(request.GET.get('next', reverse("homepage")))
 
     form = LoginForm
-    return render(request, "form.html", {"form": form})
+    return render(request, "login.html", {"form": form})
 
 
 @login_required
