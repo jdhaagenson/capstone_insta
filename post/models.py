@@ -3,10 +3,6 @@ from django.db import models
 from instauser.models import InstaUser
 
 
-def user_path(instance, filename):
-    return f'user_{instance.instauser.pk}/{filename}'
-
-
 class Post(models.Model):
     photo = models.ImageField(upload_to="image")
     caption = models.CharField(max_length=250)
