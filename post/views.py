@@ -23,7 +23,7 @@ class PostFeedView(TemplateView):
 
 class PostFormView(CreateView):
     form_class = PostForm
-    template_name = 'form.html'
+    template_name = 'upload.html'
 
     @method_decorator(login_required)
     def get(self, request, *args, **kwargs):
@@ -55,15 +55,19 @@ def ProfileView(request, userid):
 
 @login_required
 def PostDetailView(request, postid):
+    '''
+    Posts comments on the post detail page
+    '''
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             form = form.cleaned_data
-            new_comment = Comment.objects.create(
-                text = form.get('text'),
-                creator = request.user,
-                post = Post.objects.get(id=postid)
+            Comment.objects.create(
+                text=form.get('text'),
+                creator=request.user,
+                post=Post.objects.get(id=postid)
             )
+            return HttpResponseRedirect(reverse('post_details'))
     form = CommentForm
     comments = Comment.objects.all()
     post = Post.objects.get(pk=postid)
@@ -86,11 +90,46 @@ def like_post(request, postid):
     post = Post.objects.get(pk=postid)
     post.likes += 1
     post.save()
-    return HttpResponseRedirect('post_details')
+    return HttpResponseRedirect(reverse('post_details'))
 
 
 def dislike_post(request, postid):
     post = Post.objects.get(pk=postid)
     post.dislikes += 1
     post.save()
-    return HttpResponseRedirect('post_details')
+    return HttpResponseRedirect(reverse('post_details'))
+
+
+def like_comment(request, commentid):
+    comment = Comment.objects.get(pk=commentid)
+    comment.likes += 1
+    comment.save()
+    return HttpResponseRedirect(reverse('post_details'))
+
+
+class PostCommentView(DetailView):
+    """
+    Post comments with class view
+    """
+    form_class = CommentForm
+    template_name = 'details.html'
+
+    @method_decorator(login_required)
+    def get(self, request, postid):
+        post = Post.objects.get(pk=postid)
+        form = self.form_class()
+        comments = Comment.objects.filter(post=postid)
+        return render(request, self.template_name, {'form': form,
+                                                    'post': post,
+                                                    'comments': comments})
+
+    @method_decorator(login_required)
+    def post(self, request, postid):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            Comment.objects.create(
+                post=Post.objects.get(pk=postid),
+                creator=request.user,
+                text=data.get('text')
+            )

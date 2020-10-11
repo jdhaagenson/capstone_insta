@@ -15,6 +15,7 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.author}.post-{self.pk}'
 
+
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     creator = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
