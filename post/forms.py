@@ -19,4 +19,3 @@ class CommentForm(ModelForm):
         fields = [
             'text',
         ]
-    

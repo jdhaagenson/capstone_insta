@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user
+from post import models
 
 
 # Create your views here.
@@ -25,3 +26,13 @@ def unfollow_user(request, userid):
         user.followers.remove(to_unfollow)
         user.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+class ProfileView(TemplateView):
+
+    def get(self, request, user_id):
+        profile = models.InstaUser.objects.get(id=user_id)
+        posts = models.Post.objects.filter(insta_user=profile)
+        user_following = profile.following.all()
+        following_list = list(user_following)
+        return render(request, 'profile.html', {'profile': profile, 'posts': posts, 'user_following': following_list})

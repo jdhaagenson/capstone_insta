@@ -7,6 +7,44 @@
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    
+    {% if user.username == profile.username %}
+    <a href='/'><button>Home</button></a>
+<br />
+<br />
+    <h3>Following: {{ user.following.count }}</h3>
+    <h3>Posts: {{ posts.count }}</h3>
+{% else %}
+
+    <a href='/'><button>Home</button></a>
+{% if user.is_authenticated %}
+    {% if profile not in user.following.all %}
+        <a href='/follow/{{profile.id}}/'><button>Follow</button></a>
+    {% else %}
+        <a href='/unfollow/{{profile.id}}/'><button>Unfollow</button></a>
+    {% endif %}
+{% endif %}
+<br />
+<br />
+    <h3>Following: {{ user.following.count }}</h3>
+    <h3>Posts: {{ posts.count }}</h3>
+{% endif %}
+    <h1>{{ user.username }}'s Profile</h1>
+    <h2>Posts</h2>
+{% for post in posts %}
+    <ul>
+        <h4>
+            @{{ post.author.username }}
+            <br />
+            <img src="{{ post.photo.url }}" alt="photo">
+            <br />
+            {{ post.caption }}
+        </h4>
+    </ul>
+{% endfor %}
+<br />
+<br />
+{% if user.is_authenticated %}
+    <a href='/logout/'><button>Logout</button></a>
+{% endif %}
 </body>
 </html>

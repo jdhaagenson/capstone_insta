@@ -17,7 +17,7 @@
     <div>
         <ul>
             {% for comment in comments %}
-                {% if comment.tweet.id == tweet.id %}
+                {% if comment.post.id == post.id %}
                     <li>
                         {{comment.text}}<br>
                         {{comment.creator}}
