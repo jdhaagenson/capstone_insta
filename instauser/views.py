@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user
 from post import models
+from instauser.forms import EditProfileForm
 
 
 # Create your views here.
@@ -36,3 +37,22 @@ class ProfileView(TemplateView):
         user_following = profile.following.all()
         following_list = list(user_following)
         return render(request, 'profile.html', {'profile': profile, 'posts': posts, 'user_following': following_list})
+
+
+@login_required
+def edit_profile(request, user_id):
+    edit_profile = InstaUser.objects.get(id=user_id)
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST)
+        if form.is_valid():
+            data=form.cleaned_data
+            edit_profile.display_name = data['display_name']
+            edit_profile.bio = data['bio']
+            edit_profile.save()
+        return HttpResponseRedirect(reverse('profile', args=[edit_profile.id]))
+    data = {
+        'display_name': edit_profile.display_name,
+        'bio': edit_profile.bio,
+    }
+    form = EditProfileForm(initial=data)
+    return render(request, 'form.html', {'form': form})
