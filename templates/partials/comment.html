@@ -1,0 +1,8 @@
+{% for comment in comments %}
+    {% if comment.tweet.id == tweet.id %}
+        <li>
+            {{comment.text}}<br>
+            {{comment.creator}}
+        </li>
+    {% endif %}
+{% endfor %}

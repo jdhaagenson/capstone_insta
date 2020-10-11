@@ -32,9 +32,11 @@ urlpatterns = [
     path('signup/', CreateUser.as_view(), name='create_user'),
     path('follow/<int:userid>/', follow_user, name='follow'),
     path('unfollow/<int:userid>/', unfollow_user, name='unfollow'),
+    path('user/<int:userid>/', ProfileView, name='profile'),
     path('post/<int:postid>/', PostDetailView, name='post_details'),
     path('post/', PostFormView.as_view(), name='create_post'),
-    path('user/<int:userid>/', ProfileView, name='profile'),
+    path('comlike/<int:commentid>/', like_comment),
+    path('comdislike/<int:commentid>/', dislike_comment),
     # path('notifications/', ),
     path('admin/', admin.site.urls), ]
     
