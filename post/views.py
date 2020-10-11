@@ -13,7 +13,7 @@ class PostFeedView(TemplateView):
     """Home page view"""
     template_name = "feed.html"
 
-    # @method_decorator(login_required)
+    @method_decorator(login_required)
     def get(self,request, *args, **kwargs):
         user = get_user(request)
         posts = Post.objects.all()
@@ -83,6 +83,7 @@ class FollowPostView(TemplateView):
                       )
 
 
+@login_required
 def like_post(request, postid):
     post = Post.objects.get(pk=postid)
     post.likes += 1
@@ -90,6 +91,7 @@ def like_post(request, postid):
     return HttpResponseRedirect(reverse('post_details'))
 
 
+@login_required
 def dislike_post(request, postid):
     post = Post.objects.get(pk=postid)
     post.dislikes += 1
@@ -97,6 +99,7 @@ def dislike_post(request, postid):
     return HttpResponseRedirect(reverse('post_details'))
 
 
+@login_required
 def like_comment(request, commentid):
     comment = Comment.objects.get(pk=commentid)
     comment.likes += 1
@@ -104,6 +107,7 @@ def like_comment(request, commentid):
     return HttpResponseRedirect(reverse('post_details'))
 
 
+@login_required
 def dislike_comment(request, commentid):
     comment = Comment.objects.get(pk=commentid)
     comment.dislikes += 1
