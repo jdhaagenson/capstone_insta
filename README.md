@@ -4,10 +4,10 @@ This is our version of Instagram
 
 ## Coding done by
 
-Chris Warren,  
-Jordan Haagenson,  
-Andrew Belanger, &  
-Areiahna Cooks
+Andrew Belanger,  
+Areiahna Cooks,  
+Chris Warren, &  
+Jordan Haagenson
 
 ### License
 
