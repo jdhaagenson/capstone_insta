@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode,intellij,django
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,visualstudiocode,intellij,django
+# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,linux,intellij,visualstudiocode,django
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,linux,intellij,visualstudiocode,django
 
 ### Django ###
 *.log
@@ -8,8 +8,9 @@
 *.pyc
 __pycache__/
 local_settings.py
-.idea
 db.sqlite3
+db.sqlite3-journal
+media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
@@ -188,7 +189,7 @@ dmypy.json
 # .idea/modules
 # *.iml
 # *.ipr
-.idea
+
 # CMake
 cmake-build-*/
 
@@ -302,7 +303,7 @@ Temporary Items
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
-.vscode
+
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
@@ -334,6 +335,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode,intellij,django
-
-
+# End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,intellij,visualstudiocode,django
