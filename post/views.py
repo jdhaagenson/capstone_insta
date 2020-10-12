@@ -18,7 +18,7 @@ class PostFeedView(TemplateView):
         user = get_user(request)
         posts = Post.objects.all()
         return render(request, self.template_name, {'user': user,
-                                            'posts': posts
+                                                    'posts': posts,
         })
 
 
@@ -73,7 +73,7 @@ class FollowPostView(TemplateView):
     """Shows only the posts of people you are following, as well as your own."""
     @method_decorator(login_required)
     def get(self, request):
-        user = InstaUser.objects.get(username=request.user)
+        user = get_user(request)
         followers = user.followers.all()
         posts = Post.objects.filter(author__in=followers)
         my_posts = Post.objects.filter(author=user).values()

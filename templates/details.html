@@ -7,10 +7,23 @@
     <link rel="stylesheet" href="../static/style.css"></head>
 <body>
     <div id="toolbar">
-        {% include './partials/toolbar.html' %}
+        {% include './blobmenu.html' %}
     </div>
     <div>
-        {% include "./partials/post.html" %}
+        <div class="post-container">
+        <h2>{{ post.author.display_name }}</h2>
+        <h4>👤 @{{ post.author.username }}</h4>
+        <img class="postpic" src="{{ post.photo.url }}" alt="photo">
+        <h4>{{ post.caption }}</h4>
+        <h5 role="doc-credit">{{ post.date }}</h5>
+        <br>
+        <section>🧡 {{ post.likes }}</section>
+        <section>👎 {{ post.dislikes }}</section>
+        <section>
+            <a href="/post/{{ post.id }}/like/">🧡Like</a>
+            <a href="/post/{{ post.id }}/dislike/">👎Dislike</a>
+        </section>
+    </div>
     </div>
     <div>
         <ul>

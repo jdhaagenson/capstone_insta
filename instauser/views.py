@@ -11,7 +11,7 @@ from django.contrib.auth import get_user
 @login_required
 def follow_user(request, userid):
     to_follow = InstaUser.objects.get(pk=userid)
-    user = InstaUser.objects.get(pk=request.user.id)
+    user = get_user(request)
     user.followers.add(to_follow)
     user.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

@@ -24,7 +24,7 @@ from authentication.views import *
 
 urlpatterns = [
     path('', PostFeedView.as_view(), name='homepage'),
-    path('flt/', FollowPostView, name='follow_feed'),
+    path('flt/', FollowPostView.as_view(), name='follow_feed'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('like/<int:postid>/', like_post, name='like'),
