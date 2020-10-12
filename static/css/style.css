@@ -1,5 +1,5 @@
 body {
-    background-image: url('/static/bg.png');
+    background-image: url('/static/images/seamlessspiders.jpg/');
     display: grid;
     grid-template-columns: 220px auto;
 
@@ -7,7 +7,7 @@ body {
 .postpic {
     max-width: 300px;
     max-height: 300px;
-    border: 20px solid white;
+    border: 15px ridge white;
     display: flex;
     image-rendering: crisp-edges;
     shape-image-threshold: auto;
@@ -15,13 +15,15 @@ body {
 
 .post-container {
     display: flex;
-    background-color: coral;
+    background-color: #888888;
+    border: 5px solid gray;
     margin: 20px;
     width: 500px;
     flex-direction: column;
     align-items: center;
     border: 5px ridge #3d3c3c;
     padding:10px;
+    box-shadow: 1px 1px 10px black;
 }
 .postpic {
     width: 400px;
@@ -46,6 +48,22 @@ ul.navlist {
 }
 .date {
     font-size: 12px;
-    opacity: 50%;
-}
 
+}
+.comments {
+    display: grid;
+    grid-column: 2;
+    background-color: green;
+
+}
+#right {
+    display: grid;
+    grid-column: 2;
+    width: 500px;
+}
+#left {
+    display: grid;
+    grid-column: 1;
+    width: 500px;
+    margin-left: 150px;
+}

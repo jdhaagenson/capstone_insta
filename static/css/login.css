@@ -1,0 +1,27 @@
+body {
+    background-image: url('/static/images/seamless webs.jpg/');
+    background-repeat: repeat;
+    background-origin: content-box;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+}
+.loginbox {
+    position: fixed;
+
+    /*background-color: white;*/
+    display: grid;
+    width: 300px;
+    top:100px;
+    left:500px;
+    grid-row-gap: 35px;
+    place-items: center;
+    background-color: whitesmoke;
+    border: 5px solid lightgray;
+    padding: 10px;
+    font-family: "Helvetica";
+}
+.error {
+    color: red;
+
+}

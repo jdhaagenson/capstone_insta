@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     <div id="toolbar">
         {% include './blobmenu.html' %}
     </div>
 
-        <div class="post-container">
+        <div id="left" class="post-container">
         <h2>{{ post.author.display_name }}</h2>
         <h4>👤 @{{ post.author.username }}</h4>
         <img class="postpic" src="{{ post.photo.url }}" alt="photo">
@@ -52,5 +52,8 @@
         </form>
     </div>
     <span>go <a href="/">home</a></span>
+    <div id="right" class="comments">
+        {% include "./partials/comment.html" %}
+    </div>
 </body>
 </html>
