@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect,reverse
+from django.shortcuts import render, HttpResponseRedirect, reverse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from instauser.models import InstaUser
@@ -15,8 +15,13 @@ class CreateUser(TemplateView):
         form = AddUserForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            InstaUser.objects.create_user(username=data.get(
-                "username"), password=data.get("password"), display_name=data.get("display_name"))
+            InstaUser.objects.create_user(
+                username=data.get("username"),
+                display_name=data.get("display_name"),
+                password=data.get("password"),
+                bio=data.get("bio"),
+                profile_pic=data.get("profile_pic"),
+            )
 
             return HttpResponseRedirect(reverse("homepage"))
 
@@ -26,11 +31,14 @@ def login_view(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            user = authenticate(request, username=data.get(
-                "username"), password=data.get("password"))
+            user = authenticate(
+                request, username=data.get("username"), password=data.get("password")
+            )
             if user:
                 login(request, user)
-                return HttpResponseRedirect(request.GET.get('next', reverse("homepage")))
+                return HttpResponseRedirect(
+                    request.GET.get("next", reverse("homepage"))
+                )
 
     form = LoginForm
     return render(request, "login.html", {"form": form})
