@@ -46,6 +46,22 @@ ul.navlist {
 }
 .date {
     font-size: 12px;
-    opacity: 50%;
-}
 
+}
+.comments {
+    display: grid;
+    grid-column: 2;
+    background-color: green;
+
+}
+#right {
+    display: grid;
+    grid-column: 2;
+    width: 500px;
+}
+#left {
+    display: grid;
+    grid-column: 1;
+    width: 500px;
+    margin-left: 150px;
+}

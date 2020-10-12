@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     <div id="toolbar">
         {% include './blobmenu.html' %}
     </div>
 
-        <div class="post-container">
+        <div id="left" class="post-container">
         <h2>{{ post.author.display_name }}</h2>
         <h4>👤 @{{ post.author.username }}</h4>
         <img class="postpic" src="{{ post.photo.url }}" alt="photo">
@@ -25,20 +25,20 @@
             <a href="/post/{{ post.id }}/dislike/">👎Dislike</a>
         </section>
     </div>
-    <div id="comments">
-        <ul>
-            {% for comment in comments %}
-                {% if comment.tweet.id == tweet.id %}
-                    <li>
-                        {{comment.text}}<br>
-                        {{comment.creator}}
-                    </li>
-                {% endif %}
-                {% empty %}
-                    <li>No comments yet.</li>
-            {% endfor %}
-        </ul>
-    </div>
+{#    <div id="">#}
+{#        <ul>#}
+{#            {% for comment in comments %}#}
+{#                {% if comment.tweet.id == tweet.id %}#}
+{#                    <li>#}
+{#                        {{comment.text}}<br>#}
+{#                        {{comment.creator}}#}
+{#                    </li>#}
+{#                {% endif %}#}
+{#                {% empty %}#}
+{#                    <li>No comments yet.</li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    </div>#}
     <div>
         <!-- comment form -->
         <form action="" method="post">
@@ -48,5 +48,8 @@
         </form>
     </div>
     <span>go <a href="/">home</a></span>
+    <div id="right" class="comments">
+        {% include "./partials/comment.html" %}
+    </div>
 </body>
 </html>
