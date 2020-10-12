@@ -8,10 +8,17 @@
 </head>
 <body>
     <div id="toolbar">
-        {% include './partials/toolbar.html' %}
+        {% include './blobmenu.html' %}
     </div>
-    <h1>{{ user.username }}'s Profile</h1>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <img src="{{ user.photo.url }}" alt="photo" /><h1>{{ user.display_name }}'s Profile</h1>
     <div id="profile">
+        <p>{{ user.bio }}</p>
         {% if user.username == profile.username %}
             <br />
             <br />
@@ -25,9 +32,9 @@
             <h4>
                 @{{ post.author.username }}
                 <br />
-                <img src="{{ post.photo.url }}" alt="photo">
-                <br />
                 {{ post.caption }}
+                <br />
+                <img src="{{ post.photo.url }}" alt="photo">
             </h4>
         </ul>
     {% endfor %}
