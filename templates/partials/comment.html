@@ -1,8 +1,14 @@
-{% for comment in comments %}
-    {% if comment.tweet.id == tweet.id %}
-        <li>
-            {{comment.text}}<br>
-            {{comment.creator}}
-        </li>
-    {% endif %}
-{% endfor %}
+<div class="comments">
+        <ul>
+            {% for comment in comments %}
+                {% if comment.tweet.id == tweet.id %}
+                    <li>
+                        {{comment.text}}<br>
+                        {{comment.creator}}
+                    </li>
+                {% endif %}
+                {% empty %}
+                    <li>No comments yet.</li>
+            {% endfor %}
+        </ul>
+    </div>

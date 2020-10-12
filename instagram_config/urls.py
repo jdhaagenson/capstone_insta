@@ -28,6 +28,8 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('signup/', CreateUser.as_view(), name='create_user'),
+    path('deleteallcomments/<int:postid>/', delete_all_comments, name='delete_post_comments'),
+    path('deletecomment/<int:commentid>/', delete_comment, name='delete_specific_comment'),
     path('post/<int:postid>/like/', like_post, name='like'),
     path('post/<int:postid>/dislike/', dislike_post, name='dislike'),
     path('post/<int:postid>/<int:commentid>/like/', like_comment),

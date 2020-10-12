@@ -58,7 +58,7 @@ def PostDetailView(request, postid):
                 creator=request.user,
                 post=Post.objects.get(id=postid)
             )
-            return HttpResponseRedirect(reverse('post_details'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER','post_details'))
     form = CommentForm
     comments = Comment.objects.filter(post=postid)
     post = Post.objects.get(pk=postid)
@@ -84,7 +84,7 @@ def like_post(request, postid):
     post = Post.objects.get(pk=postid)
     post.likes += 1
     post.save()
-    return HttpResponseRedirect(reverse('homepage'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER','homepage'))
 
 
 @login_required
@@ -92,6 +92,17 @@ def dislike_post(request, postid):
     post = Post.objects.get(pk=postid)
     post.dislikes += 1
     post.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER','homepage'))
+
+@login_required
+def delete_all_comments(request, postid):
+    this_post = Post.objects.get(id=postid)
+    comments = Comment.objects.filter(post__id=this_post.id).delete()
+    return HttpResponseRedirect(reverse('homepage'))
+
+@login_required
+def delete_comment(request, commentid):
+    comment = Comment.objects.get(id=commentid).delete()
     return HttpResponseRedirect(reverse('homepage'))
 
 
@@ -100,7 +111,7 @@ def like_comment(request, postid, commentid):
     comment = Comment.objects.get(pk=commentid)
     comment.likes += 1
     comment.save()
-    return HttpResponseRedirect(reverse('post_details'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER','post_details'))
 
 
 @login_required
@@ -108,31 +119,29 @@ def dislike_comment(request, postid, commentid):
     comment = Comment.objects.get(pk=commentid)
     comment.dislikes += 1
     comment.save()
-    return HttpResponseRedirect(reverse('post_details'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER','post_details'))
 
 
-class PostDetails(DetailView):
-    form_class = CommentForm
-    template_name = 'details.html'
-
-    def get(self, request, postid, *args, **kwargs):
-        post = Post.objects.get(pk=postid)
-        comments = Comment.objects.filter(post_id=postid)
-        user = get_user(request)
-        form = CommentForm()
-        return render(request, 'details.html', {'form':form, 'user':user, 'post':post, 'comments':comments})
-
-    def post(self, request, postid, *args, **kwargs):
-        form = CommentForm(request.POST)
-        user = get_user(request)
-        post = Post.objects.get(pk=postid)
-        if form.is_valid():
-            data = form.cleaned_data
-            Comment.objects.create(
-                text=data.get('text'),
-                post=post,
-                creator=user)
-            return reverse_lazy('post_details')
+# class PostDetails(DetailView):
+#     form_class = CommentForm
+#     template_name = 'details.html'
+#     def get(self, request, postid, *args, **kwargs):
+#         post = Post.objects.get(pk=postid)
+#         comments = Comments.objects.filter(post_id=postid)
+#         user = get_user(request)
+#         form = CommentForm()
+#         return render(request, 'details.html', {'form':form, 'user':user, 'post':post, 'comments':comments})
+#     def post(self, request, postid, *args, **kwargs):
+#         form = CommentForm(request.POST)
+#         user = get_user(request)
+#         post = Post.objects.get(pk=postid)
+#         if form.is_valid():
+#             data = form.cleaned_data
+#             Comment.objects.create(
+#                 text=data.get('text'),
+#                 post=post,
+#                 creator=user)
+#             return reverse_lazy('post_details')
 
 
 class PostDelete(DeleteView):

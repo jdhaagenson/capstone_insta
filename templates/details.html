@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     <div id="toolbar">
         {% include './blobmenu.html' %}
     </div>
 
-        <div class="post-container">
+        <div id="left" class="post-container">
         <h2>{{ post.author.display_name }}</h2>
         <h4>👤 @{{ post.author.username }}</h4>
         <img class="postpic" src="{{ post.photo.url }}" alt="photo">
@@ -26,14 +26,18 @@
         </section>
     </div>
     <div id="comments">
+        {% if post.author == request.user %}
+            <a href="/deleteallcomments/{{post.id}}/"><button>delete</button></a>
+        {% endif %}
         <ul>
             {% for comment in comments %}
-                {% if comment.tweet.id == tweet.id %}
                     <li>
                         {{comment.text}}<br>
                         {{comment.creator}}
+                        {% if comment.creator == request.user or post.author == request.user %}
+                            <a href="/deletecomment/{{comment.id}}/"><button>delete</button></a>
+                        {% endif %}
                     </li>
-                {% endif %}
                 {% empty %}
                     <li>No comments yet.</li>
             {% endfor %}
@@ -48,5 +52,8 @@
         </form>
     </div>
     <span>go <a href="/">home</a></span>
+    <div id="right" class="comments">
+        {% include "./partials/comment.html" %}
+    </div>
 </body>
 </html>

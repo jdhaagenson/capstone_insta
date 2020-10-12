@@ -2,3 +2,4 @@
     "python.pythonPath": ".venv/bin/python3",
     "python.formatting.provider": "black"
 }
+
