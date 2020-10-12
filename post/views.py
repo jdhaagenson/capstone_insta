@@ -45,13 +45,6 @@ class PostFormView(CreateView):
 
 
 @login_required
-def ProfileView(request, userid):
-    user = InstaUser.objects.get(pk=userid)
-    posts = Post.objects.filter(author_id=userid)
-    return render(request, 'profile.html', {'user': user, 'posts': posts})
-
-
-@login_required
 def PostDetailView(request, postid):
     '''
     Posts comments on the post detail page
@@ -121,12 +114,14 @@ def dislike_comment(request, postid, commentid):
 class PostDetails(DetailView):
     form_class = CommentForm
     template_name = 'details.html'
+
     def get(self, request, postid, *args, **kwargs):
         post = Post.objects.get(pk=postid)
-        comments = Comments.objects.filter(post_id=postid)
+        comments = Comment.objects.filter(post_id=postid)
         user = get_user(request)
         form = CommentForm()
         return render(request, 'details.html', {'form':form, 'user':user, 'post':post, 'comments':comments})
+
     def post(self, request, postid, *args, **kwargs):
         form = CommentForm(request.POST)
         user = get_user(request)
