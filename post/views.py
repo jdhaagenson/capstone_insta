@@ -101,6 +101,17 @@ def dislike_post(request, postid):
     post.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','homepage'))
 
+@login_required
+def delete_all_comments(request, postid):
+    this_post = Post.objects.get(id=postid)
+    comments = Comment.objects.filter(post__id=this_post.id).delete()
+    return HttpResponseRedirect(reverse('homepage'))
+
+@login_required
+def delete_comment(request, commentid):
+    comment = Comment.objects.get(id=commentid).delete()
+    return HttpResponseRedirect(reverse('homepage'))
+
 
 @login_required
 def like_comment(request, postid, commentid):

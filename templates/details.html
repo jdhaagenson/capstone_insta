@@ -26,14 +26,18 @@
         </section>
     </div>
     <div id="comments">
+        {% if post.author == request.user %}
+            <a href="/deleteallcomments/{{post.id}}/"><button>delete</button></a>
+        {% endif %}
         <ul>
             {% for comment in comments %}
-                {% if comment.tweet.id == tweet.id %}
                     <li>
                         {{comment.text}}<br>
                         {{comment.creator}}
+                        {% if comment.creator == request.user or post.author == request.user %}
+                            <a href="/deletecomment/{{comment.id}}/"><button>delete</button></a>
+                        {% endif %}
                     </li>
-                {% endif %}
                 {% empty %}
                     <li>No comments yet.</li>
             {% endfor %}
