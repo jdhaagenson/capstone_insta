@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from instauser.models import InstaUser
 from django.contrib.auth import get_user
+from django.urls import reverse_lazy
 
 
 class PostFeedView(TemplateView):
@@ -17,8 +18,10 @@ class PostFeedView(TemplateView):
     def get(self,request, *args, **kwargs):
         user = get_user(request)
         posts = Post.objects.all()
+        comments = Comment.objects.all()
         return render(request, self.template_name, {'user': user,
                                                     'posts': posts,
+                                                    'comments': comments,
         })
 
 
@@ -88,7 +91,7 @@ def like_post(request, postid):
     post = Post.objects.get(pk=postid)
     post.likes += 1
     post.save()
-    return HttpResponseRedirect(reverse('post_details'))
+    return HttpResponseRedirect(reverse('homepage'))
 
 
 @login_required
@@ -96,11 +99,11 @@ def dislike_post(request, postid):
     post = Post.objects.get(pk=postid)
     post.dislikes += 1
     post.save()
-    return HttpResponseRedirect(reverse('post_details'))
+    return HttpResponseRedirect(reverse('homepage'))
 
 
 @login_required
-def like_comment(request, commentid):
+def like_comment(request, postid, commentid):
     comment = Comment.objects.get(pk=commentid)
     comment.likes += 1
     comment.save()
@@ -108,8 +111,37 @@ def like_comment(request, commentid):
 
 
 @login_required
-def dislike_comment(request, commentid):
+def dislike_comment(request, postid, commentid):
     comment = Comment.objects.get(pk=commentid)
     comment.dislikes += 1
     comment.save()
     return HttpResponseRedirect(reverse('post_details'))
+
+
+class PostDetails(DetailView):
+    form_class = CommentForm
+    template_name = 'details.html'
+    def get(self, request, postid, *args, **kwargs):
+        post = Post.objects.get(pk=postid)
+        comments = Comments.objects.filter(post_id=postid)
+        user = get_user(request)
+        form = CommentForm()
+        return render(request, 'details.html', {'form':form, 'user':user, 'post':post, 'comments':comments})
+    def post(self, request, postid, *args, **kwargs):
+        form = CommentForm(request.POST)
+        user = get_user(request)
+        post = Post.objects.get(pk=postid)
+        if form.is_valid():
+            data = form.cleaned_data
+            Comment.objects.create(
+                text=data.get('text'),
+                post=post,
+                creator=user)
+            return reverse_lazy('post_details')
+
+
+class PostDelete(DeleteView):
+    model = Post
+    success_url = reverse_lazy('homepage')
+
+

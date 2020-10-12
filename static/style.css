@@ -1,5 +1,5 @@
 body {
-    background-image: url('/static/2.png');
+    background-image: url('/static/bg.png');
     display: grid;
     grid-template-columns: 220px auto;
 
@@ -14,15 +14,18 @@ body {
 }
 
 .post-container {
-    display: grid;
+    display: flex;
     background-color: coral;
     margin: 20px;
     width: 500px;
-
+    flex-direction: column;
+    align-items: center;
+    border: 5px ridge #3d3c3c;
+    padding:10px;
 }
 .postpic {
-    max-width: 350px;
-    max-height: 350px;
+    width: 400px;
+    height: 400px;
 }
 
 #toolbar li {
@@ -37,87 +40,12 @@ ul.navlist {
     padding: 0px;
 }
 
-/*########################################*/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
---primary-color: #ff9e03;
---secondary-color: #881590;
---complimentary-color: #53d522;
---contrast-color: #952424;
---light-color: #b8e5e0;
-}
-
-.container {
-  background: #191919;
-  min-height: 100vh;
-  font-family: Montserrat, sans-serif;
-}
-
-nav a {
-    font-size: 40px;
-    color: #fff;
-    text-decoration: none;
-    padding: 20px;
-    text-align: center;
-}
-
-nav {
-    position: fixed;
-    left: 0;
-    z-index: 50;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    height: 100vh;
-    background: rgb(171,210, 42);
-}
-
-section {
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 0;
-    opacity: 0;
-    transition: all ease-in .5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-section h1 {
-    color: #fff;
-    font-size: 50px;
-    text-transform: uppercase;
-    opacity: 0;
-}
-
-/* Styles applied on trigger */
-section:target {
-    opacity: 1;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-}
-
-section:target h1 {
-    opacity: 0;
-    animation: 2s fadeIn forwards .5s;
-}
-
-
-@keyframes fadeIn {
-    100% { opacity:1 }
-}
-
-.center {
-    display: grid;
-    place-items: center;
+.caption {
+    font-size: 20px;
 
 }
+.date {
+    font-size: 12px;
+    opacity: 50%;
+}
+

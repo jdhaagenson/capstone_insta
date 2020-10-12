@@ -1,18 +1,18 @@
 {% for post in posts %}
     <div class="post-container">
-        <h2>{{ post.author.display_name }}</h2>
-        <h4>👤 @{{ post.author.username }}</h4>
+        <a href="/user/{{ post.author.id }}"><h2>{{ post.author.display_name }}</h2></a>
+        <a href="/user/{{ post.author.id }}"><h4>👤 @{{ post.author.username }}</h4></a>
         <img class="postpic" src="{{ post.photo.url }}" alt="photo">
-        <h4>{{ post.caption }}</h4>
-        <h5 role="doc-credit">{{ post.date }}</h5>
+        <h4 class="caption">{{ post.caption }}</h4>
+        <h5 class="date">{{ post.date }}</h5>
         <br>
-        <div>
-            <a href="/post/{{ post.id }}/like/">🧡Like</a>
-            <a href="/post/{{ post.id }}/dislike/">👎Dislike</a>
-        </div>
         <div>
         <p style="display:inline;">🧡 {{ post.likes }}</p>
         <p style="display:inline;">👎 {{ post.dislikes }}</p>
+        </div>
+        <div>
+            <a href="/post/{{ post.id }}/like/"><button>🧡Like</button></a>
+            <a href="/post/{{ post.id }}/dislike/"><button>👎Dislike</button></a>
         </div>
         <div>
             <a href="/post/{{ post.id }}/">Comments</a>
