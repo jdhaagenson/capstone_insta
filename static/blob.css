@@ -165,6 +165,11 @@ section {
   --x: 65;
   --y: 65;
 }
+.menu__item:nth-of-type(5) {
+  --delay: 0.5;
+  --x: 45;
+  --y: 35;
+}
 .menu__link {
   -webkit-box-align: center;
           align-items: center;

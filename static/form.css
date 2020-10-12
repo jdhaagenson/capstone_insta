@@ -1,3 +1,10 @@
 body {
     background-image: url('/static/4.png')
 }
+ .card {
+    display: block;
+    place-items: center;
+    position: fixed;
+    margin-left: 200px;
+
+}

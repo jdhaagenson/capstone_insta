@@ -115,3 +115,9 @@ section:target h1 {
 @keyframes fadeIn {
     100% { opacity:1 }
 }
+
+.center {
+    display: grid;
+    place-items: center;
+
+}
