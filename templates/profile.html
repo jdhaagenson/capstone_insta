@@ -4,11 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../static/blob.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <div id="toolbar">
-        {% include './blobmenu.html' %}
+        {% include './partials/toolbar.html' %}
+    </div>
+    <h1>{{ user.username }}'s Profile</h1>
+    <div id="profile">
+        {% if user.username == profile.username %}
+            <br />
+            <br />
+            <h3>Following: {{ user.following.count }}</h3>
+            <h3>Posts: {{ posts.count }}</h3>
+        {% endif %}
+        <br />
+        <br />
+        {% for post in posts %}
+        <ul>
+            <h4>
+                @{{ post.author.username }}
+                <br />
+                <img src="{{ post.photo.url }}" alt="photo">
+                <br />
+                {{ post.caption }}
+            </h4>
+        </ul>
+    {% endfor %}
     </div>
 </body>
 </html>
