@@ -11,7 +11,7 @@
         {% include './blobmenu.html' %}
     </div>
 
-        <div id="left" class="post-container">
+    <div id="left" class="post-container">
         <h2>{{ post.author.display_name }}</h2>
         <h4>👤 @{{ post.author.username }}</h4>
         <img class="postpic" src="{{ post.photo.url }}" alt="photo">
@@ -26,10 +26,7 @@
         </section>
     </div>
     <div id="comments">
-        {% if post.author == request.user %}
-            <a href="/deleteallcomments/{{post.id}}/"><button>delete</button></a>
-        {% endif %}
-        <ul>
+        <!-- <ul>
             {% for comment in comments %}
                     <li>
                         {{comment.text}}<br>
@@ -41,10 +38,9 @@
                 {% empty %}
                     <li>No comments yet.</li>
             {% endfor %}
-        </ul>
+        </ul> -->
     </div>
     <div>
-        <!-- comment form -->
         <form action="" method="post">
             {% csrf_token %}
             {{ form.as_p}}
@@ -53,6 +49,9 @@
     </div>
     <span>go <a href="/">home</a></span>
     <div id="right" class="comments">
+        {% if post.author == request.user %}
+            <a href="/deleteallcomments/{{post.id}}/"><button>delete</button></a>
+        {% endif %}
         {% include "./partials/comment.html" %}
     </div>
 </body>
