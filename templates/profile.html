@@ -34,7 +34,6 @@
       <a href="/notifications/"><button>Check</button></a></h3>
       <h3>Following: {{ profile.followers.count }}</h3>
       <br />
-      <!-- {{ profile.followers.all }} -->
       <ul>
         {% for each in profile.followers.all %}
           <a href="/user/{{ each.id }}/">{{ each.username }}</a>
