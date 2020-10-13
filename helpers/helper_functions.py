@@ -8,6 +8,7 @@ def get_tags(text):
     for word in text.split():
         if word.startswith('@') != 0:
             tag = word[1:]
-            user = InstaUser.objects.get(username=tag)
-            tags.append(tag)
+            user = InstaUser.objects.filter(username=tag)
+            if user:
+                tags.append(tag)
     return tags

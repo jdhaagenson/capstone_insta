@@ -20,6 +20,7 @@
       <p>{{ profile.bio }}</p>
       {% if user.id == profile.id %}
         <a href="/user/{{ profile.id }}/edit"><button>Edit!</button></a>
+        
       {% endif %}
       <br />
         {% if profile.is_authenticated %}
@@ -29,6 +30,7 @@
                 <a href="/user/{{ profile.id }}/unfollow/"><button>Unfollow</button></a>
             {% endif %}
         {% endif %}
+      <h3>Notifications: {{Notifications.count}} <a href="/notifications/"><button>Check</button></a></h3>
       <h3>Following: {{ profile.followers.count }}</h3>
       <h3>Posts: {{ posts.count }}</h3>
       {{ profile }}
