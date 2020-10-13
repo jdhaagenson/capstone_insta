@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <div id="toolbar">
-        {% include './blobmenu.html' %}
-    </div>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div id="toolbar">{% include './blobmenu.html' %}</div>
     {% if profile.profile_pic.url is not None %}
-    <img class="profile-pic" src="{{ profile.profile_pic.url }}/" alt="photo" /><h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
+    <img class="profile-pic" src="{{ profile.profile_pic.url }}/" alt="photo" />
+    <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
     {% else %}
-    <img class="profile-pic" src="/media/image/default.jpg" alt="photo" /><h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
+    <img class="profile-pic" src="/media/image/default.jpg" alt="photo" />
+    <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
     {% endif %}
     <div id="profile">
-        <h2>About</h2>
-        <p>{{ profile.bio }}</p>
-        <a  href="/user/{{ profile.id }}/edit"><button>Edit!</button></a>
-        <h3>Notifications: {{Notifications.count}} <a href="/notifications/"><button>Check</button></a></h3>
-        <h3>Following: {{ profile.followers.count }}</h3>
-        <h3>Posts: {{ posts.count }}</h3>
-        {{ profile }}
-        <div class="posts">
-            <h2>Posts by {{ profile }}</h2>
-            {% include "./partials/post.html" %}
-        </div>
+      <h2>About</h2>
+      <p>{{ profile.bio }}</p>
+      {% if user.id == profile.id %}
+        <a href="/user/{{ profile.id }}/edit"><button>Edit!</button></a>
+        
+      {% endif %}
+      <br />
+        {% if profile.is_authenticated %}
+            {% if profile not in user.followers.all %}
+                <a href="/user/{{ profile.id }}/follow/"><button>Follow</button></a>
+            {% else %}
+                <a href="/user/{{ profile.id }}/unfollow/"><button>Unfollow</button></a>
+            {% endif %}
+        {% endif %}
+      <h3>Notifications: {{Notifications.count}} <a href="/notifications/"><button>Check</button></a></h3>
+      <h3>Following: {{ profile.followers.count }}</h3>
+      <h3>Posts: {{ posts.count }}</h3>
+      {{ profile }}
+      <div class="posts">
+        <h2>Posts by {{ profile }}</h2>
+        {% include "./partials/post.html" %}
+      </div>
     </div>
-</body>
+  </body>
 </html>

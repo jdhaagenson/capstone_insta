@@ -24,7 +24,7 @@ def follow_user(request, userid):
 def unfollow_user(request, userid):
     to_unfollow = InstaUser.objects.get(pk=userid)
     user = get_user(request)
-    if to_unfollow in user.followers:
+    if to_unfollow in user.followers.all():
         user.followers.remove(to_unfollow)
         user.save()
     return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
@@ -47,11 +47,11 @@ def edit_profile(request, user_id):
     if request.method == "POST":
         form = EditProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            # data = form.cleaned_data
-            # edit_profile.profile_pic = data["profile_pic"]
-            # # breakpoint()
-            # edit_profile.display_name = data["display_name"]
-            # edit_profile.bio = data["bio"]
+            data = form.cleaned_data
+            edit_profile.profile_pic = data["profile_pic"]
+            # breakpoint()
+            edit_profile.display_name = data["display_name"]
+            edit_profile.bio = data["bio"]
             edit_profile.save()
         return HttpResponseRedirect(reverse("profile", args=[edit_profile.id]))
     data = {
@@ -59,4 +59,4 @@ def edit_profile(request, user_id):
         "bio": edit_profile.bio,
     }
     form = EditProfileForm(initial=data)
-    return render(request, "upload.html", {"form": form})
+    return render(request, "edit.html", {"form": form})
