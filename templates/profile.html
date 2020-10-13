@@ -16,7 +16,7 @@
     <br />
     <br />
     <br />
-    <img src="{{ profile.profile_pic.url }}/" alt="photo" /><h1>{{ profile.display_name }}'s Profile</h1>
+    <img src="{{ profile.profile_pic.url | default_if_none:"default.jpg" }}/" alt="photo" /><h1>{{ profile.display_name }}'s Profile</h1>
     <div id="profile">
         <p>{{ profile.bio }}</p>
             <br />
