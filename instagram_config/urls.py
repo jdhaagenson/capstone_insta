@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from instauser.views import *
 from post.views import *
 from authentication.views import *
+from notifications.views import *
 
 
 urlpatterns = [
@@ -40,7 +41,7 @@ urlpatterns = [
     path('user/<int:userid>/follow/', follow_user, name='follow'),
     path('user/<int:userid>/', ProfileView, name='profile'),
     path('post/<int:postid>/delete', PostDelete.as_view()),
-    # path('notifications/', ),
+    path('notifications/', notification_view, name='notifications'),
     path('admin/', admin.site.urls), ]
     
 if settings.DEBUG:

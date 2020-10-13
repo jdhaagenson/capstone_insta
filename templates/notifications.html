@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpookaGram | Notifications</title>
+</head>
+<body>
+    <h2>Notifications page</h2>
+    <br>
+        {% for alert in notifications %}
+        <ul>
+            {{alert.message}}
+            <br>
+            from: {{alert.created_by}}
+        </ul>
+            {% endfor %}
+    <span>go <a href="/user/{{request.user.id}}">back to profile</a></span>
+</body>
+</html>

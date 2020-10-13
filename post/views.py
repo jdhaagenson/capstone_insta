@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse
 from .models import Post, Comment
+from notifications.models import Notification
 from .forms import PostForm, CommentForm
 from django.views import View
 from django.views.generic import DetailView, CreateView, FormView, TemplateView, ListView, DeleteView
@@ -8,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from instauser.models import InstaUser
 from django.contrib.auth import get_user
 from django.urls import reverse_lazy
+from helpers.helper_functions import get_tags
 
 
 class PostFeedView(TemplateView):
@@ -40,6 +42,13 @@ class PostFormView(CreateView):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            if get_tags(new_comment.text):
+                for alerted_username in get_tags(new_comment.text):
+                    new_notification = Notification.objects.create(
+                        message = new_comment.text,
+                        alert_for = InstaUser.objects.get(username=alerted_username),
+                        created_by = request.user
+                    )
             return HttpResponseRedirect(reverse('homepage'))
         return render(request, self.template_name, {'form': form})
 
@@ -60,11 +69,18 @@ def PostDetailView(request, postid):
         form = CommentForm(request.POST)
         if form.is_valid():
             form = form.cleaned_data
-            Comment.objects.create(
+            new_comment = Comment.objects.create(
                 text=form.get('text'),
                 creator=request.user,
                 post=Post.objects.get(id=postid)
             )
+            if get_tags(new_comment.text):
+                for alerted_username in get_tags(new_comment.text):
+                    new_notification = Notification.objects.create(
+                        message = new_comment.text,
+                        alert_for = InstaUser.objects.get(username=alerted_username),
+                        created_by = request.user
+                    )
             return HttpResponseRedirect(request.META.get('HTTP_REFERER','post_details'))
     form = CommentForm
     comments = Comment.objects.filter(post=postid)
@@ -127,28 +143,6 @@ def dislike_comment(request, postid, commentid):
     comment.dislikes += 1
     comment.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','post_details'))
-
-
-# class PostDetails(DetailView):
-#     form_class = CommentForm
-#     template_name = 'details.html'
-#     def get(self, request, postid, *args, **kwargs):
-#         post = Post.objects.get(pk=postid)
-#         comments = Comments.objects.filter(post_id=postid)
-#         user = get_user(request)
-#         form = CommentForm()
-#         return render(request, 'details.html', {'form':form, 'user':user, 'post':post, 'comments':comments})
-#     def post(self, request, postid, *args, **kwargs):
-#         form = CommentForm(request.POST)
-#         user = get_user(request)
-#         post = Post.objects.get(pk=postid)
-#         if form.is_valid():
-#             data = form.cleaned_data
-#             Comment.objects.create(
-#                 text=data.get('text'),
-#                 post=post,
-#                 creator=user)
-#             return reverse_lazy('post_details')
 
 
 class PostDelete(DeleteView):
