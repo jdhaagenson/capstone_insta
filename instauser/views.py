@@ -29,15 +29,16 @@ def unfollow_user(request, userid):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-class ProfileView(TemplateView):
-    
-    def get(self, request, user_id):
-        profile = models.InstaUser.objects.get(id=user_id)
-        posts = models.Post.objects.filter(insta_user=profile)
-        user_following = profile.following.all()
+def ProfileView(request, user_id):
+        profile = InstaUser.objects.get(id=user_id)
+        posts = models.Post.objects.filter(author=profile.id)
+        user_following = profile.followers.all()
+        # breakpoint()
         following_list = list(user_following)
-        return render(request, 'profile.html', {'profile': profile, 'posts': posts, 'user_following': following_list})
-
+        return render(request, 'profile.html', {'profile': profile,
+                                                    'posts': posts,
+                                                    'user_following': following_list,
+        })
 
 @login_required
 def edit_profile(request, user_id):

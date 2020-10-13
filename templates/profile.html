@@ -4,33 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <div id="toolbar">
         {% include './blobmenu.html' %}
     </div>
-    <h1>{{ user.username }}'s Profile</h1>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <img src="{{ profile.profile_pic.url }}/" alt="photo" /><h1>{{ profile.display_name }}'s Profile</h1>
     <div id="profile">
-        {% if user.username == profile.username %}
+        <p>{{ profile.bio }}</p>
             <br />
-            <br />
-            <h3>Following: {{ user.following.count }}</h3>
+            <h3>Following: {{ profile.following.count }}</h3>
             <h3>Posts: {{ posts.count }}</h3>
-        {% endif %}
-        <br />
-        <br />
+        {{ profile }}
         {% for post in posts %}
         <ul>
             <h4>
                 @{{ post.author.username }}
                 <br />
-                <img src="{{ post.photo.url }}" alt="photo">
-                <br />
                 {{ post.caption }}
+                <br />
+                <img src="{{ post.photo.url }}" alt="photo">
             </h4>
         </ul>
     {% endfor %}
+    <a  href="/user/{{ profile.id }}/edit"><button>Edit!</button></a>
     </div>
 </body>
 </html>
