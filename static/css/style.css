@@ -46,8 +46,25 @@ ul.navlist {
     font-size: 20px;
 
 }
+.username {
+    display:inline;
+    color: #e8792e;
+    text-decoration: none;
+    font-style: italic;
+    font-size: small;
+}
+a:-webkit-any-link {
+    cursor: pointer;
+}
+.display_name {
+    display:inline;
+    font-size:medium;
+    font-weight: bold;
+    text-decoration: none;
+}
 .date {
     font-size: 12px;
+    display: inline;
 
 }
 .comments {
@@ -67,3 +84,17 @@ ul.navlist {
     width: 500px;
     margin-left: 150px;
 }
+.profile-pic {
+    border: 20px solid grey;
+    margin: 10px;
+}
+.profile {
+    display: flex;
+    background-color: grey;
+
+}
+
+.posts {
+
+}
+

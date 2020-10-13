@@ -3,27 +3,34 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from instauser.models import InstaUser
 from .forms import LoginForm, AddUserForm
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 
 
-class CreateUser(TemplateView):
-    def get(self, request):
-        form = AddUserForm
-        return render(request, "signup.html", {"form": form})
+class CreateUser(CreateView):
+    form_class = AddUserForm
+    template_name = "signup.html"
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {"form": form})
 
-    def post(self, request):
-        form = AddUserForm(request.POST)
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
-            data = form.cleaned_data
-            InstaUser.objects.create_user(
-                username=data.get("username"),
-                display_name=data.get("display_name"),
-                password=data.get("password"),
-                bio=data.get("bio"),
-                profile_pic=data.get("profile_pic"),
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            img = form.cleaned_data.get('profile_pic')
+            display_name = form.cleaned_data.get('display_name')
+            bio = form.cleaned_data.get('bio')
+            obj = InstaUser.objects.create_user(
+                username=username,
+                display_name=display_name,
+                password=password,
+                bio=bio,
+                profile_pic=img,
             )
-
-            return HttpResponseRedirect(reverse("homepage"))
+            obj.save()
+            return HttpResponseRedirect(reverse('homepage'))
+        return render(request, self.template_name, {'form': form})
 
 
 def login_view(request):

@@ -47,11 +47,11 @@ def edit_profile(request, user_id):
     if request.method == "POST":
         form = EditProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            data = form.cleaned_data
-            edit_profile.profile_pic = data["profile_pic"]
-            # breakpoint()
-            edit_profile.display_name = data["display_name"]
-            edit_profile.bio = data["bio"]
+            # data = form.cleaned_data
+            # edit_profile.profile_pic = data["profile_pic"]
+            # # breakpoint()
+            # edit_profile.display_name = data["display_name"]
+            # edit_profile.bio = data["bio"]
             edit_profile.save()
         return HttpResponseRedirect(reverse("profile", args=[edit_profile.id]))
     data = {
