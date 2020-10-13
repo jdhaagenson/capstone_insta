@@ -10,34 +10,23 @@
     <div id="toolbar">
         {% include './blobmenu.html' %}
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <img src="{{ profile.profile_pic.url }}/" alt="photo" /><h1>{{ profile.display_name }}'s Profile</h1>
+    {% if profile.profile_pic.url is not None %}
+    <img class="profile-pic" src="{{ profile.profile_pic.url }}/" alt="photo" /><h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
+    {% else %}
+    <img class="profile-pic" src="/media/image/default.jpg" alt="photo" /><h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
+    {% endif %}
     <div id="profile">
+        <h2>About</h2>
         <p>{{ profile.bio }}</p>
-            <br />
-            <h3>Notifications: <a href="/notifications/"><button>Check{{Notifications.count}}</button></a></h3>
-            <h3>Following: {{ profile.following.count }}</h3>
-            <h3>Posts: {{ posts.count }}</h3>
+        <a  href="/user/{{ profile.id }}/edit"><button>Edit!</button></a>
+        <h3>Notifications: {{Notifications.count}} <a href="/notifications/"><button>Check</button></a></h3>
+        <h3>Following: {{ profile.followers.count }}</h3>
+        <h3>Posts: {{ posts.count }}</h3>
         {{ profile }}
-        {% for post in posts %}
-        <ul>
-            <h4>
-                @{{ post.author.username }}
-                <br />
-                {{ post.caption }}
-                <br />
-                <img src="{{ post.photo.url }}" alt="photo">
-            </h4>
-        </ul>
-    {% endfor %}
-    <a  href="/user/{{ profile.id }}/edit"><button>Edit!</button></a>
+        <div class="posts">
+            <h2>Posts by {{ profile }}</h2>
+            {% include "./partials/post.html" %}
+        </div>
     </div>
 </body>
 </html>

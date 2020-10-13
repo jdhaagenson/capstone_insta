@@ -39,11 +39,12 @@ urlpatterns = [
     path('post/', PostFormView.as_view(), name='create_post'),
     path('user/<int:userid>/unfollow/', unfollow_user, name='unfollow'),
     path('user/<int:userid>/follow/', follow_user, name='follow'),
-    path('user/<int:userid>/', ProfileView, name='profile'),
+    path('user/<int:user_id>/', ProfileView, name='profile'),
+    path('user/<int:user_id>/edit', edit_profile, name='editprofile'),
     path('post/<int:postid>/delete', PostDelete.as_view()),
     path('notifications/', notification_view, name='notifications'),
     path('admin/', admin.site.urls), ]
-    
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -54,13 +54,6 @@ class PostFormView(CreateView):
 
 
 @login_required
-def ProfileView(request, userid):
-    user = InstaUser.objects.get(pk=userid)
-    posts = Post.objects.filter(author_id=userid)
-    return render(request, 'profile.html', {'user': user, 'posts': posts})
-
-
-@login_required
 def PostDetailView(request, postid):
     '''
     Posts comments on the post detail page
