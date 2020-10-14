@@ -27,19 +27,7 @@
             </div>
         </div>
         <div id="comments">
-            <!-- <ul>
-                {% for comment in comments %}
-                        <li>
-                            {{comment.text}}<br>
-                            {{comment.creator}}
-                            {% if comment.creator == request.user or post.author == request.user %}
-                                <a href="/deletecomment/{{comment.id}}/"><button>delete</button></a>
-                            {% endif %}
-                        </li>
-                    {% empty %}
-                        <li>No comments yet.</li>
-                {% endfor %}
-            </ul> -->
+            {% include "./partials/comment.html" %}
         </div>
         <div class="commentform">
             <form action="" method="post">
@@ -51,9 +39,9 @@
         <span>go <a href="/">home</a></span>
         <div id="right" class="comments">
             {% if post.author == request.user %}
-                <a href="/deleteallcomments/{{post.id}}/"><button>delete</button></a>
+                <a href="/deleteallcomments/{{post.id}}/"><button>❌</button></a>
             {% endif %}
-            {% include "./partials/comment.html" %}
+            
         </div>
 
     </div>

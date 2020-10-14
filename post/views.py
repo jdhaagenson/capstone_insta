@@ -68,7 +68,7 @@ def PostDetailView(request, postid):
                 creator=request.user,
                 post=Post.objects.get(id=postid)
             )
-            if get_tags(new_comment.text):
+            if get_tags(new_comment.text) is not None:
                 for alerted_username in get_tags(new_comment.text):
                     new_notification = Notification.objects.create(
                         message = new_comment.text,

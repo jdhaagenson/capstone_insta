@@ -28,7 +28,7 @@ body {
     box-shadow: 1px 1px 10px black;
 }
 .postpic {
-    max-width: ;
+    width: minmax(300px, 600px);
 }
 
 .caption {
@@ -74,7 +74,7 @@ body {
 }
 
 #right {
-    display: grid;
+    display: flex;
     width: 500px;
 }
 #left {
@@ -88,9 +88,12 @@ body {
 
 .like-link {
     text-decoration: none;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 10px;
-    width: 200px
+    width: 150px;
+    background: linear-gradient(darkgray, black);
+    color: white
 }
 .post-likes {
     display: inline;
