@@ -19,7 +19,7 @@ class PostFeedView(TemplateView):
     @method_decorator(login_required)
     def get(self,request, *args, **kwargs):
         user = get_user(request)
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-date')
         comments = Comment.objects.all()
         return render(request, self.template_name, {'user': user,
                                                     'posts': posts,
@@ -45,10 +45,10 @@ class PostFormView(CreateView):
             form.save()
             if get_tags(caption) is not None:
                 for alerted_username in get_tags(caption):
-                    new_notification = Notification.objects.create(
-                        message = caption,
-                        alert_for = InstaUser.objects.get(username=alerted_username),
-                        created_by = request.user
+                    new_notification=Notification.objects.create(
+                        message=caption,
+                        alert_for=InstaUser.objects.get(username=alerted_username),
+                        created_by=request.user
                     )
             return HttpResponseRedirect(reverse('homepage'))
         return render(request, self.template_name, {'form': form})
