@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth import get_user
 from post import models
 from instauser.forms import EditProfileForm
+from notifications.models import Notification
 
 
 # Create your views here.
@@ -32,15 +33,22 @@ def unfollow_user(request, userid):
 
 @login_required
 def ProfileView(request, user_id):
-        profile = InstaUser.objects.get(id=user_id)
-        posts = models.Post.objects.filter(author=profile.id)
-        user_following = profile.followers.all()
-        # breakpoint()
-        following_list = list(user_following)
-        return render(request, 'profile.html', {'profile': profile,
-                                                    'posts': posts,
-                                                    'user_following': following_list,
-        })
+    profile = InstaUser.objects.get(id=user_id)
+    posts = models.Post.objects.filter(author=profile.id)
+    user_following = profile.followers.all()
+    following_list = list(user_following)
+    notifications = Notification.objects.filter(alert_for=profile)
+    return render(
+        request,
+        "profile.html",
+        {
+            "profile": profile,
+            "posts": posts,
+            "user_following": following_list,
+            "notifications": notifications,
+        },
+    )
+
 
 @login_required
 def edit_profile(request, user_id):

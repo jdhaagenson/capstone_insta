@@ -23,6 +23,6 @@ class Comment(models.Model):
     date = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
-    
+
     def __str__(self):
         return self.text
