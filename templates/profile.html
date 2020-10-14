@@ -32,7 +32,9 @@
         {% endif %}
       <h3>Notifications: {{ notifications.count }}
         <br />
-      <a href="/notifications/"><button>Check</button></a></h3>
+        {% if profile.is_authenticated %}
+          <a href="/notifications/"><button>Check</button></a></h3>
+        {% endif %}
       <h3>Following: {{ profile.followers.count }}</h3>
       <ul>
         {% for each in profile.followers.all %}
