@@ -20,7 +20,8 @@
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit" />
-        <a  href="/user/{{ profile.id }}/"><button>Cancel</button></a>
     </form>
+    {{ profile }}
+    <a  href="/user/{{ user.id }}/"><button>Cancel</button></a>
 </body>
 </html>
