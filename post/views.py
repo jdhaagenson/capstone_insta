@@ -42,10 +42,10 @@ class PostFormView(CreateView):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            if get_tags(new_comment.text):
-                for alerted_username in get_tags(new_comment.text):
+            if get_tags(caption):
+                for alerted_username in get_tags(caption):
                     new_notification = Notification.objects.create(
-                        message = new_comment.text,
+                        message = caption,
                         alert_for = InstaUser.objects.get(username=alerted_username),
                         created_by = request.user
                     )
