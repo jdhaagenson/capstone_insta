@@ -19,7 +19,7 @@ class PostFeedView(TemplateView):
     @method_decorator(login_required)
     def get(self,request, *args, **kwargs):
         user = get_user(request)
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-date')
         comments = Comment.objects.all()
         return render(request, self.template_name, {'user': user,
                                                     'posts': posts,
@@ -41,13 +41,14 @@ class PostFormView(CreateView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
+            caption = form.cleaned_data.get('caption')
             form.save()
-            if get_tags(caption):
+            if get_tags(caption) is not None:
                 for alerted_username in get_tags(caption):
-                    new_notification = Notification.objects.create(
-                        message = caption,
-                        alert_for = InstaUser.objects.get(username=alerted_username),
-                        created_by = request.user
+                    new_notification=Notification.objects.create(
+                        message=caption,
+                        alert_for=InstaUser.objects.get(username=alerted_username),
+                        created_by=request.user
                     )
             return HttpResponseRedirect(reverse('homepage'))
         return render(request, self.template_name, {'form': form})
@@ -67,7 +68,7 @@ def PostDetailView(request, postid):
                 creator=request.user,
                 post=Post.objects.get(id=postid)
             )
-            if get_tags(new_comment.text):
+            if get_tags(new_comment.text) is not None:
                 for alerted_username in get_tags(new_comment.text):
                     new_notification = Notification.objects.create(
                         message = new_comment.text,

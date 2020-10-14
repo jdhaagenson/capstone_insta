@@ -1,11 +1,21 @@
-body {
-    background-image: url('/static/4.png')
+* {
+    box-sizing: border-box;
 }
+body{
+    text-align: center;
+
+}
+
  .card {
     display: block;
     place-items: center;
     position: fixed;
     left: 500px;
+}
 
-
+form {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
 }

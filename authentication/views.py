@@ -29,6 +29,7 @@ class CreateUser(CreateView):
                 profile_pic=img,
             )
             obj.save()
+
             return HttpResponseRedirect(reverse('homepage'))
         return render(request, self.template_name, {'form': form})
 

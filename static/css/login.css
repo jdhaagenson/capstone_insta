@@ -1,27 +1,29 @@
 body {
-    background-image: url('/static/images/seamless webs.jpg/');
-    background-repeat: repeat;
-    background-origin: content-box;
-    background-color: black;
-    width: 100%;
-    height: 100%;
+    text-align: center;
 }
 .loginbox {
-    position: fixed;
-
+     position: relative;
     /*background-color: white;*/
-    display: grid;
-    width: 300px;
+    width: 100%;
+    place-self: center;
+    max-width: 330px;
     top:100px;
-    left:500px;
-    grid-row-gap: 35px;
-    place-items: center;
     background-color: whitesmoke;
-    border: 5px solid lightgray;
-    padding: 10px;
+    border: 10px solid thistle ;
+    box-shadow: 1px 1px 5px black;
+    padding: 15px;
     font-family: "Helvetica";
+    text-align: center;
+    margin: auto;
 }
 .error {
     color: red;
 
+}
+form {
+    max-width: 330px;
+    padding: 15px;
+}
+#signup {
+    margin: 10px;
 }

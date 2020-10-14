@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpookaGram | Notifications</title>
-</head>
+{% include './partials/head.html' %}
 <body>
-    <h2>Notifications page</h2>
-    <br>
-        {% for alert in notifications %}
-        <ul>
-            {{alert.message}}
-            <br>
-            from: {{alert.created_by}}
-        </ul>
-            {% endfor %}
-    <span>go <a href="/user/{{request.user.id}}">back to profile</a></span>
+    <div class="container-fluid">
+        <h2>Notifications page</h2>
+        <br>
+            {% for alert in notifications %}
+            <ul>
+                {{alert.message}}
+                <br>
+                from: {{alert.created_by}}
+            </ul>
+                {% endfor %}
+        <span>go <a href="/user/{{request.user.id}}">back to profile</a></span>
+    </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>

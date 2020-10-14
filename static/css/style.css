@@ -1,9 +1,11 @@
+/* all templates */
 body {
-    background-image: url('/static/images/seamlessspiders.jpg/');
+    /* background-image: url('/static/images/seamlessspiders.jpg/'); */
     display: grid;
-    grid-template-columns: 220px auto;
+    grid-template-columns: 120px auto;
 
 }
+/* post.html ######################################*/
 .postpic {
     max-width: 300px;
     max-height: 300px;
@@ -26,20 +28,7 @@ body {
     box-shadow: 1px 1px 10px black;
 }
 .postpic {
-    width: 400px;
-    height: 400px;
-}
-
-#toolbar li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid black;
-}
-#toolbar ul {
-    list-style-type: none;
-}
-ul.navlist {
-    padding: 0px;
+    width: minmax(300px, 600px);
 }
 
 .caption {
@@ -52,38 +41,67 @@ ul.navlist {
     text-decoration: none;
     font-style: italic;
     font-size: small;
+    align-self: flex-start;
 }
-a:-webkit-any-link {
-    cursor: pointer;
-}
+
 .display_name {
     display:inline;
     font-size:medium;
     font-weight: bold;
     text-decoration: none;
+    align-self: flex-start;
 }
+
 .date {
     font-size: 12px;
     display: inline;
 
 }
+
+/* post details #########################################*/
+#details-background {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    align-content:space-around;
+    background-color: rgb(157, 78, 202);
+    
+}
 .comments {
-    display: grid;
+    display: flex;
     grid-column: 2;
     background-color: green;
-
 }
+
 #right {
-    display: grid;
-    grid-column: 2;
+    display: flex;
     width: 500px;
 }
 #left {
-    display: grid;
-    grid-column: 1;
+    display: flex;
     width: 500px;
     margin-left: 150px;
 }
+.commentform {
+    grid-area: b
+}
+
+.like-link {
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px;
+    width: 150px;
+    background: linear-gradient(darkgray, black);
+    color: white
+}
+.post-likes {
+    display: inline;
+    flex-direction: row;
+}
+
+
+/* profile.html ######################################### */
 .profile-pic {
     border: 20px solid grey;
     margin: 10px;
@@ -94,7 +112,5 @@ a:-webkit-any-link {
 
 }
 
-.posts {
 
-}
 
