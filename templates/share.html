@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/static/css/form.css">
+</head>
+
+<body>
+    <div id="toolbar">
+        {% include './blobmenu.html' %}
+    </div>
+    <form class="card" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+        <hr>
+        <h2>Post your are sharing:</h2>
+        {% for post in shared_post %}
+        <h3>
+            {{post.author}} - {{post.caption}}</h3>
+        <h4>{{post.date}}</h4>
+        <img class="sharedpic" src="{{ post.photo.url }}" alt="photo" width=55%>
+        {% endfor %}
+    </form>
+
+
+</body>
+
+
+</html>

@@ -13,7 +13,7 @@ class Post(models.Model):
     author = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.author}.post-{self.pk}'
+        return f"{self.author}.post-{self.pk}"
 
 
 class Comment(models.Model):
@@ -23,6 +23,15 @@ class Comment(models.Model):
     date = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
-    
+
     def __str__(self):
         return self.text
+
+
+class SharePost(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    caption = models.CharField(max_length=250)
+    date = models.DateTimeField(default=timezone.now)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
+    author = models.ForeignKey(InstaUser, on_delete=models.CASCADE)

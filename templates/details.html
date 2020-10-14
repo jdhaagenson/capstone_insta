@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
+
 <body>
     <div id="toolbar">
         {% include './blobmenu.html' %}
@@ -18,7 +20,12 @@
             <p class="caption">{{ post.caption }}</p>
             <p class="date">{{ post.date }}</p>
             <br>
-            <p class="post-likes">🧡 {{ post.likes }}</p><p class="post-likes">👎 {{ post.dislikes }}</p>
+            <div>
+                <button><a href="/share/{{post.id}}">Share</a></button>
+            </div>
+
+            <p class="post-likes">🧡 {{ post.likes }}</p>
+            <p class="post-likes">👎 {{ post.dislikes }}</p>
             <div>
                 <a class="like-link" href="/post/{{ post.id }}/like/">
                     <button class="like-link">🧡Like</button></a>
@@ -39,11 +46,12 @@
         <span>go <a href="/">home</a></span>
         <div id="right" class="comments">
             {% if post.author == request.user %}
-                <a href="/deleteallcomments/{{post.id}}/"><button>❌</button></a>
+            <a href="/deleteallcomments/{{post.id}}/"><button>❌</button></a>
             {% endif %}
-            
+
         </div>
 
     </div>
 </body>
+
 </html>

@@ -24,27 +24,34 @@ from notifications.views import *
 
 
 urlpatterns = [
-    path('', PostFeedView.as_view(), name='homepage'),
-    path('flt/', FollowPostView.as_view(), name='follow_feed'),
-    path('login/', login_view, name='login'),
-    path('logout/', logout_view, name='logout'),
-    path('signup/', CreateUser.as_view(), name='create_user'),
-    path('deleteallcomments/<int:postid>/', delete_all_comments, name='delete_post_comments'),
-    path('deletecomment/<int:commentid>/', delete_comment, name='delete_specific_comment'),
-    path('post/<int:postid>/like/', like_post, name='like'),
-    path('post/<int:postid>/dislike/', dislike_post, name='dislike'),
-    path('post/<int:postid>/<int:commentid>/like/', like_comment),
-    path('post/<int:postid>/<int:commentid>/dislike/', dislike_comment),
-    path('post/<int:postid>/', PostDetailView, name='post_details'),
-    path('post/', PostFormView.as_view(), name='create_post'),
-    path('user/<int:userid>/unfollow/', unfollow_user, name='unfollow'),
-    path('user/<int:userid>/follow/', follow_user, name='follow'),
-    path('user/<int:user_id>/', ProfileView, name='profile'),
-    path('user/<int:user_id>/edit', edit_profile, name='editprofile'),
-    path('post/<int:postid>/delete', PostDelete.as_view()),
-    path('notifications/', notification_view, name='notifications'),
-    path('admin/', admin.site.urls), ]
+    path("", PostFeedView.as_view(), name="homepage"),
+    path("flt/", FollowPostView.as_view(), name="follow_feed"),
+    path("login/", login_view, name="login"),
+    path("logout/", logout_view, name="logout"),
+    path("signup/", CreateUser.as_view(), name="create_user"),
+    path(
+        "deleteallcomments/<int:postid>/",
+        delete_all_comments,
+        name="delete_post_comments",
+    ),
+    path(
+        "deletecomment/<int:commentid>/", delete_comment, name="delete_specific_comment"
+    ),
+    path("post/<int:postid>/like/", like_post, name="like"),
+    path("post/<int:postid>/dislike/", dislike_post, name="dislike"),
+    path("post/<int:postid>/<int:commentid>/like/", like_comment),
+    path("post/<int:postid>/<int:commentid>/dislike/", dislike_comment),
+    path("share/<int:postid>/", SharePostView),
+    path("post/<int:postid>/", PostDetailView, name="post_details"),
+    path("post/", PostFormView.as_view(), name="create_post"),
+    path("user/<int:userid>/unfollow/", unfollow_user, name="unfollow"),
+    path("user/<int:userid>/follow/", follow_user, name="follow"),
+    path("user/<int:user_id>/", ProfileView, name="profile"),
+    path("user/<int:user_id>/edit", edit_profile, name="editprofile"),
+    path("post/<int:postid>/delete", PostDelete.as_view()),
+    path("notifications/", notification_view, name="notifications"),
+    path("admin/", admin.site.urls),
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
