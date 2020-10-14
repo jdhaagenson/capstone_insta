@@ -29,9 +29,8 @@
                 <a href="/user/{{ profile.id }}/unfollow/"><button>Unfollow</button></a>
             {% endif %}
         {% endif %}
-        {{ user.notifications }}
       <h3>Notifications: {{ notifications.count }}
-      <br />
+        <br />
       <a href="/notifications/"><button>Check</button></a></h3>
       <h3>Following: {{ profile.followers.count }}</h3>
       <ul>
