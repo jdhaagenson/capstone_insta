@@ -30,6 +30,7 @@ def unfollow_user(request, userid):
     return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
 
+@login_required
 def ProfileView(request, user_id):
         profile = InstaUser.objects.get(id=user_id)
         posts = models.Post.objects.filter(author=profile.id)

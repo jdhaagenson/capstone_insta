@@ -1,6 +1,6 @@
 /* all templates */
 body {
-    background-image: url('/static/images/seamlessspiders.jpg/');
+    /* background-image: url('/static/images/seamlessspiders.jpg/'); */
     display: grid;
     grid-template-columns: 120px auto;
 
