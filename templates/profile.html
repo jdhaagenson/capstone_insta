@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css" />
     <link rel="stylesheet" href="/static/css/profile.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Sansita+Swashed:wght@300&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
   </head>
   <body>
     <div id="toolbar">{% include './blobmenu.html' %}</div>
@@ -20,11 +22,11 @@
         <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
         {% endif %}
         <div id="profile">
-            <h2>About</h2>
+            <p>About</p>
             <p>{{ profile.bio }}</p>
             {% if user.id == profile.id %}
-            <a href="/user/{{ profile.id }}/edit"><button>Edit!</button></a>
-            <a href="/notifications/"><button>Check Notifications</button></a></h3>
+            <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/edit"><i class="material-icons">edit</i></a>
+            <a class="btn-floating btn-large waves-effect waves-light light-green" href="/notifications/"><i class="material-icons">notifications_active</i></a>
             {% endif %}
             <br />
             {% if profile != request.user %}
@@ -38,19 +40,24 @@
             {% endif %}
             
                 <br />
-                <h3>Following: {{ profile.followers.count }}</h3>
+                <p>Following: {{ profile.followers.count }}</p>
                 <ul>
                     {% for each in profile.followers.all %}
                     <a href="/user/{{ each.id }}/">{{ each.username }}</a>
                     <br />
                     {% endfor %}
                 </ul>
-                <h3>Posts: {{ posts.count }}</h3>
+                <p>Posts: {{ posts.count }}</p>
             </div>
             <div id="post-container">
                 <div class="posts">
-                    <h2>Posts by {{ profile }}</h2>
-                    {% include "./partials/post.html" %}
+                    <h3>Posts by {{ profile }}</h3>
+                        <div class="gallery">
+                            {% for post in posts %}
+                            <a href="/post/{{ post.id }}/"><img class="galleryphoto" src="{{ post.photo.url }}" alt="photo"></a>
+                            {% endfor %}
+                        </div>
+                    <!-- {% include "./partials/post.html" %} -->
                 </div>
             </div>
         </div>

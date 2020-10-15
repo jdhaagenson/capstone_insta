@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
-    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.4rem;
 }
 
 #profile-container {
@@ -21,11 +22,7 @@
     font-weight: light;
     justify-self: left;
 }
-#profile-container button {
-    background: linear-gradient(lightgray, darkgray);
-    height:2em;
-    width:10em;
-}
+
 .profile-pic {
     border: 2px solid grey;
     margin: auto;
@@ -50,4 +47,24 @@
     width: 10em;
 }
 
+.profile-header {
+    font-family: 'Sansita Swashed', cursive;
+}
+h3 {
+    font-family: 'Sansita Swashed', cursive;
 
+}
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: baseline;
+    align-items: center;
+}
+.galleryphoto {
+    border: 1px solid gray;
+    /* box-shadow: 1px 1px 5px gray; */
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}
