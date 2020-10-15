@@ -4,49 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/profile.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   </head>
   <body>
     <div id="toolbar">{% include './blobmenu.html' %}</div>
-    {% if profile.profile_pic.url is not None %}
-      <img class="profile-pic" src="{{ profile.profile_pic.url }}/" alt="photo" />
-      <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
-    {% else %}
-      <img class="profile-pic" src="/media/image/default.jpg" alt="photo" />
-      <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
-    {% endif %}
-    <div id="profile">
-      <h2>About</h2>
-      <p>{{ profile.bio }}</p>
-      {% if user.id == profile.id %}
-        <a href="/user/{{ profile.id }}/edit"><button>Edit!</button></a>
-      {% endif %}
-      <br />
-        {% if profile.is_authenticated %}
-            {% if profile not in user.followers.all %}
-                <a href="/user/{{ profile.id }}/follow/"><button>Follow</button></a>
-            {% else %}
-                <a href="/user/{{ profile.id }}/unfollow/"><button>Unfollow</button></a>
-            {% endif %}
+    <div id="profile-container">
+        {% if profile.profile_pic.url is not None %}
+        <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
+        <img class="profile-pic" src="{{ profile.profile_pic.url }}/" alt="photo" />
+        {% else %}
+        <img class="profile-pic" src="/media/image/default.jpg" alt="photo" />
+        <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
         {% endif %}
-      <h3>Notifications: {{ notifications.count }}
-        <br />
-      <a href="/notifications/"><button>Check</button></a></h3>
-      <h3>Following: {{ profile.followers.count }}</h3>
-      <ul>
-        {% for each in profile.followers.all %}
-          <a href="/user/{{ each.id }}/">{{ each.username }}</a>
-          <br />
-        {% endfor %}
-      </ul>
-      <h3>Posts: {{ posts.count }}</h3>
-      <div class="posts">
-        <h2>Posts by {{ profile }}</h2>
-        {% include "./partials/post.html" %}
-      </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>  
-</body>
+        <div id="profile">
+            <h2>About</h2>
+            <p>{{ profile.bio }}</p>
+            {% if user.id == profile.id %}
+            <a href="/user/{{ profile.id }}/edit"><button>Edit!</button></a>
+            <a href="/notifications/"><button>Check Notifications</button></a></h3>
+            {% endif %}
+            <br />
+            {% if profile != request.user %}
+            {% if profile.is_authenticated %}
+            {% if profile not in user.followers.all %}
+            <a href="/user/{{ profile.id }}/follow/"><button id="follow">Follow</button></a>
+            {% else %}
+            <a href="/user/{{ profile.id }}/unfollow/"><button id="unfollow">Unfollow</button></a>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            
+                <br />
+                <h3>Following: {{ profile.followers.count }}</h3>
+                <ul>
+                    {% for each in profile.followers.all %}
+                    <a href="/user/{{ each.id }}/">{{ each.username }}</a>
+                    <br />
+                    {% endfor %}
+                </ul>
+                <h3>Posts: {{ posts.count }}</h3>
+            </div>
+            <div id="post-container">
+                <div class="posts">
+                    <h2>Posts by {{ profile }}</h2>
+                    {% include "./partials/post.html" %}
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
 </html>
