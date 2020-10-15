@@ -1,52 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-</head>
+{% include './partials/head.html' %}
 <body>
     <div id="toolbar">
         {% include './blobmenu.html' %}
     </div>
     <div id="details-background">
-        <div id="left" class="post-container">
-            <p class="display_name">{{ post.author.display_name }}</p>
-            <p class="username">👤 @{{ post.author.username }}</p>
-            <img class="postpic" src="{{ post.photo.url }}" alt="photo">
-            <p class="caption">{{ post.caption }}</p>
-            <p class="date">{{ post.date }}</p>
-            <br>
-            <p class="post-likes">🧡 {{ post.likes }}</p><p class="post-likes">👎 {{ post.dislikes }}</p>
-            <div>
-                <a class="like-link" href="/post/{{ post.id }}/like/">
-                    <button class="like-link">🧡Like</button></a>
-                <a class="like-link" href="/post/{{ post.id }}/dislike/">
-                    <button class="like-link">👎Dislike</button></a>
+        <div class="row">
+            <div class="col s12 m6">
+                <div id="left" class="card">
+                    <div class="card-image">
+                        <img class="postpic" src="{{ post.photo.url }}" alt="photo">
+                    </div>
+                    <div class="card-content">
+                        <p class="display_name">{{ post.author.display_name }}</p>
+                        <p class="username">👤 @{{ post.author.username }}</p>
+                        <p class="date">{{ post.date }}</p>
+                        <p class="caption">{{ post.caption }}</p>
+                        <p class="post-likes">🧡 {{ post.likes }}</p><p class="post-likes">👎 {{ post.dislikes }}</p>
+                        <a class="btn-floating waves-effect waves-light red" href="/post/{{ post.id }}/like/">
+                            <i class="material-icons">favorite</i></a>
+                        <a class="btn-floating waves-effect waves-light red" href="/post/{{ post.id }}/dislike/">
+                            <i class="material-icons">mood_bad</i></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="comments">
-            {% include "./partials/comment.html" %}
-        </div>
-        <div class="commentform">
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p}}
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-        <span>go <a href="/">home</a></span>
-        <div id="right" class="comments">
-            {% if post.author == request.user %}
-                <a href="/deleteallcomments/{{post.id}}/"><button>❌</button></a>
-            {% endif %}
-            
-        </div>
-
+        <div class="row">
+            <div class="col s12 m6">
+                <div id="right" class="card">
+                    <div id="comments" class="card">
+                        {% include "./partials/comment.html" %}
+                    </div>
+                    <div class="row">
+                        <form class="col s6" action="" method="post">
+                            {% csrf_token %}
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">mode_comment</i>
+                                {{form.text}}
+                                <label for="{{form.text.id_for_label}}">Type your comment here...</label>
+                            </div>
+                            <input class="waves-effect waves-light btn" type="submit" value="Submit">
+                        </form>
+                        {% if post.author == request.user %}
+                            <a href="/deleteallcomments/{{post.id}}/"><button>❌ALL</button></a>
+                        {% endif %}
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <span>go <a href="/">home</a></span>
+                
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

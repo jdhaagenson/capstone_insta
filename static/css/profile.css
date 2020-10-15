@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.4rem;
+}
+
+#profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 150px;
+}
+#post-container {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+#profile-container h3 {
+    font-size:1em;
+    font-weight: light;
+    justify-self: left;
+}
+
+.profile-pic {
+    border: 2px solid grey;
+    margin: auto;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+}
+.profile {
+    display: flex;
+    background-color: grey;
+    justify-content: left;
+
+}
+#follow {
+    background: linear-gradient(lightgray, darkgray);
+    height:2em;
+    width:10em;
+}
+#unfollow {
+    background: linear-gradient(darkgray, lightgray);
+    height: 2em;
+    width: 10em;
+}
+
+.profile-header {
+    font-family: 'Sansita Swashed', cursive;
+}
+h3 {
+    font-family: 'Sansita Swashed', cursive;
+
+}
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: baseline;
+    align-items: center;
+}
+.galleryphoto {
+    border: 1px solid gray;
+    /* box-shadow: 1px 1px 5px gray; */
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}
