@@ -22,7 +22,7 @@
         <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
         {% endif %}
         <div id="profile">
-            <p>About</p>
+            <h6>About</h6><br>
             <p>{{ profile.bio }}</p>
             {% if user.id == profile.id %}
             <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/edit"><i class="material-icons">edit</i></a>

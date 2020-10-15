@@ -21,9 +21,11 @@ class PostFeedView(TemplateView):
         user = get_user(request)
         posts = Post.objects.all().order_by('-date')
         comments = Comment.objects.all()
+        all_users = InstaUser.objects.all()
         return render(request, self.template_name, {'user': user,
                                                     'posts': posts,
                                                     'comments': comments,
+                                                    'all_users': all_users,
         })
 
 

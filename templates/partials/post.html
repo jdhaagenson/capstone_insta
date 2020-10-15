@@ -5,11 +5,14 @@
                 <div class="card-image">
                     <img class="postpic" src="{{ post.photo.url }}" alt="photo">
                 </div>
-                <div class="card-content"></div>
-                <a class="display_name" href="/user/{{ post.author.id }}"><h2 class="display_name">{{ post.author.display_name }}</h2></a>
-                <a class="username" href="/user/{{ post.author.id }}"><h4 class="username">👤 @{{ post.author.username }}</h4></a>
-                <p class="date">{{ post.date }}</p>
-                <p id="caption">{{ post.caption }}</p>
+                <div class="card-content">
+                    <a class="display_name" href="/user/{{ post.author.id }}"><h2 class="display_name">{{ post.author.display_name }}</h2></a>
+                    <a class="username" href="/user/{{ post.author.id }}"><h4 class="username">👤 @{{ post.author.username }}</h4></a>
+                    <p class="date">{{ post.date }}</p>
+                </div>
+                <div class="card-content">
+                    <p id="caption">{{ post.caption }}</p>
+                </div>
                     <br>
                     <div class="card-action">
                     <p style="display:inline;">🧡 {{ post.likes }}</p>

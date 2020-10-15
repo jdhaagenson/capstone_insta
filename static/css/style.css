@@ -3,7 +3,7 @@
 
 /* all templates */
 body {
-    /* background-image: url('/static/images/seamlessspiders.jpg/'); */
+    background-image: url('/static/images/newpost.gif/');
     display: grid;
     grid-template-columns: 120px 50vw 50vw;
     font-family: 'Open Sans', sans-serif;
@@ -87,6 +87,7 @@ body {
 #right {
     display: flex;
     width: 500px;
+    flex-direction: row;
 }
 #left {
     display: flex;
@@ -117,4 +118,18 @@ body {
 }
 .card-content {
     margin: 5px;
+}
+#list-users {
+    display: flex;
+    flex-direction: column;
+}
+
+#list-users img, p {
+    display: inline;
+    flex-direction: column;
+}
+
+valign{
+    display: flex;
+    justify-content: space-evenly;
 }
