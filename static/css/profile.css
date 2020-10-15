@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+#profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 150px;
+}
+#post-container {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+#profile-container h3 {
+    font-size:1em;
+    font-weight: light;
+    justify-self: left;
+}
+#profile-container button {
+    background: linear-gradient(lightgray, darkgray);
+    height:2em;
+    width:10em;
+}
+.profile-pic {
+    border: 2px solid grey;
+    margin: auto;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+}
+.profile {
+    display: flex;
+    background-color: grey;
+    justify-content: left;
+
+}
+#follow {
+    background: linear-gradient(lightgray, darkgray);
+    height:2em;
+    width:10em;
+}
+#unfollow {
+    background: linear-gradient(darkgray, lightgray);
+    height: 2em;
+    width: 10em;
+}
+
+
