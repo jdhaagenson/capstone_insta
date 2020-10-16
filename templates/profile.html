@@ -24,6 +24,8 @@
         <div id="profile">
             <h6>About</h6><br>
             <p>{{ profile.bio }}</p>
+            <br />
+            <br />
             {% if user.id == profile.id %}
             <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/edit"><i class="material-icons">edit</i></a>
             <a class="btn-floating btn-large waves-effect waves-light light-green" href="/notifications/"><i class="material-icons">notifications_active</i><span class="new badge">{{ notifications.count }}</span></a>

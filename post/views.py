@@ -12,6 +12,19 @@ from django.urls import reverse_lazy
 from helpers.helper_functions import get_tags
 
 
+def handler404View(request, exception, template_name="404.html"):
+    response = render_to_response(template_name)
+    return response
+
+
+def handler500View(request):
+    return render(request, '500.html', status=500)
+
+
+def handler403View(request, exception):
+    return render(request, 'forbidden.html')
+
+
 class PostFeedView(TemplateView):
     """Home page view"""
     template_name = "feed.html"
