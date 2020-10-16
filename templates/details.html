@@ -1,6 +1,6 @@
 {% include './partials/head.html' %}
 <body>
-    <div id="toolbar">
+    <div >
         {% include './blobmenu.html' %}
     </div>
     <div id="details-background">
@@ -8,47 +8,48 @@
             <div class="col s12 m6">
                 <div id="left" class="card">
                     <div class="card-image">
-                        <img class="postpic" src="{{ post.photo.url }}" alt="photo">
+                        <img class="card-image postpic" src="{{ post.photo.url }}" alt="photo">
                     </div>
                     <div class="card-content">
                         <p class="display_name">{{ post.author.display_name }}</p>
                         <p class="username">👤 @{{ post.author.username }}</p>
                         <p class="date">{{ post.date }}</p>
-                        <p class="caption">{{ post.caption }}</p>
-                        <p class="post-likes">🧡 {{ post.likes }}</p><p class="post-likes">👎 {{ post.dislikes }}</p>
-                        <a class="btn-floating waves-effect waves-light red" href="/post/{{ post.id }}/like/">
+                        <div class="card-content">
+                            <p class="caption">{{ post.caption }}</p>
+                        </div>
+                        <div class="card-action"></div>
+                        <p class="post-likes">❤️ {{ post.likes }}</p>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red" href="/post/{{ post.id }}/like/">
                             <i class="material-icons">favorite</i></a>
-                        <a class="btn-floating waves-effect waves-light red" href="/post/{{ post.id }}/dislike/">
-                            <i class="material-icons">mood_bad</i></a>
+                        </div>
+                    </div>
+                    <span> <a href="/"><i class="material-icons">home</i>Back to Home</a></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <div id="right" class="card">
+                        <div id="comments" class="card-content">
+                            {% include "./partials/comment.html" %}
+                        </div>
+                        <form class="card-panel" action="" method="post">
+                            {% csrf_token %}
+                            <div class="input-field col s12 valign-wrapper">
+                                <i class="material-icons prefix">add_comment</i>
+                                <input type={{form.text}}>
+                                <label onclick="hidden" for={{form.text.id_for_label}}>Comment here...</label>
+                                <input class="waves-effect waves-light btn" type="submit" value="Submit">
+                            </div>
+                    </form>
+                    <div class="card-action">
+                        {% if post.author == request.user %}
+                            <a href="/deleteallcomments/{{post.id}}/">❌ DELETE ALL COMMENTS</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 m6">
-                <div id="right" class="card">
-                    <div id="comments" class="card">
-                        {% include "./partials/comment.html" %}
-                    </div>
-                    <div class="row">
-                        <form class="col s6" action="" method="post">
-                            {% csrf_token %}
-                            <div class="input-field col s6">
-                                <i class="material-icons prefix">mode_comment</i>
-                                {{form.text}}
-                                <label for="{{form.text.id_for_label}}">Type your comment here...</label>
-                            </div>
-                            <input class="waves-effect waves-light btn" type="submit" value="Submit">
-                        </form>
-                        {% if post.author == request.user %}
-                            <a href="/deleteallcomments/{{post.id}}/"><button>❌ALL</button></a>
-                        {% endif %}
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                </div>
-                <span>go <a href="/">home</a></span>
+    </div>
                 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

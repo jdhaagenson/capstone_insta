@@ -1,0 +1,9 @@
+{% for user in all_users %}
+<div class="valign-wrapper valign">
+    <a href="/user/{{ user.id }}/">
+        <img style="width:75px; height:75px;border-radius: 100px;" src="{{ user.profile_pic.url }}" alt="profile-photo">
+        <span style="font-weight: bold; display:inline; ">{{ user.display_name }}</span><span style="font-weight: light; font-style: italic; display:inline; "> @{{ user.username }}</span>
+    </a>
+    <hr>
+</div>
+{% endfor %}

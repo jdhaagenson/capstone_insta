@@ -2,11 +2,12 @@
 <html lang="en">
 {% include './partials/head.html' %}
 <body>
-    <div id="toolbar">
-        {% include './blobmenu.html' %}
-    </div>
+    {% include './blobmenu.html' %}
     <div id="feed">
         {% include './partials/post.html' %}
+    </div>
+    <div id="list-users">
+        {% include './partials/users.html' %}
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
