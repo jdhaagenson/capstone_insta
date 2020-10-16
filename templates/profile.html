@@ -18,7 +18,7 @@
         <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
         <img class="profile-pic" src="{{ profile.profile_pic.url }}/" alt="photo" />
         {% else %}
-        <img class="profile-pic" src="/media/image/default.jpg" alt="photo" />
+        <img class="profile-pic" src="/static/images/blank_user.jpg" alt="photo" />
         <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
         {% endif %}
         <div id="profile">
