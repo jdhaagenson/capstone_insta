@@ -2,18 +2,26 @@
 <html lang="en">
 {% include './partials/head.html' %}
 <body>
+    {% include "./blobmenu.html" %}
     <div class="container-fluid">
         <h2>Notifications page</h2>
         <br>
             {% for alert in notifications %}
-            <ul>
-                from: {{alert.created_by}}, {{alert.date}}
-                <br>
-                {{alert.message}}
-            </ul>
-                {% endfor %}
+
+                <ul class="collection">
+                    <li class="collection-item avatar">
+                      <img src="{{ alert.created_by.profile_pic.url }}" alt="" class="circle">
+                      <span class="title">{{ alert.created_by.display_name }}</span>
+                      <p>{{ alert.date }} <br>
+                         {{ alert.message }}
+                      </p>
+                      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                    </li>
+                </ul>
+            {% endfor %}
         <span>go <a href="/user/{{request.user.id}}">back to profile</a></span>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
+
