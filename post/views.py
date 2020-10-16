@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse
-from .models import Post, Comment
+from .models import Post, Comment, PostLikes
 from notifications.models import Notification
 from .forms import PostForm, CommentForm
 from django.views import View
@@ -101,8 +101,23 @@ class FollowPostView(TemplateView):
 @login_required
 def like_post(request, postid):
     post = Post.objects.get(pk=postid)
-    post.likes += 1
-    post.save()
+    user = get_user(request)
+    obj, created = PostLikes.objects.get_or_create(
+        user=user,
+        post=post
+    )
+    if obj.liked:
+        post.likes -= 1
+        post.save()
+        obj.liked = False
+        obj.save()
+    if not obj.liked:
+        post.likes += 1
+        post.save()
+        obj.liked = True
+        obj.save()
+
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','homepage'))
 
 

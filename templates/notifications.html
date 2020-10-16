@@ -7,9 +7,9 @@
         <br>
             {% for alert in notifications %}
             <ul>
-                {{alert.message}}
+                from: {{alert.created_by}}, {{alert.date}}
                 <br>
-                from: {{alert.created_by}}
+                {{alert.message}}
             </ul>
                 {% endfor %}
         <span>go <a href="/user/{{request.user.id}}">back to profile</a></span>

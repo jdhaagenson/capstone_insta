@@ -1,6 +1,13 @@
 /* font-family: 'Open Sans', sans-serif; */
 /* font-family: 'Sansita Swashed', cursive; */
 
+/* colors */
+/* a = #F6E1CA
+#F6CAD3
+#D4BCAE
+#D4B1AE
+#EBD4CD */
+
 /* all templates */
 body {
     background-image: url('/static/images/newpost.gif/');
@@ -8,7 +15,7 @@ body {
     grid-template-columns: 120px 50vw 50vw;
     font-family: 'Open Sans', sans-serif;
     line-height: 1.4;
-    background-color: #eeeeee
+    /* background-color:  */
 
 }
 /* post.html ######################################*/
@@ -87,12 +94,13 @@ body {
 #right {
     display: flex;
     width: 500px;
-    flex-direction: row;
+    flex-direction: column;
 }
 #left {
     display: flex;
-    width: 500px;
+    width: 40vw;
     margin-left: 150px;
+    flex-direction: column
 }
 .commentform {
     grid-area: b
@@ -129,7 +137,3 @@ body {
     flex-direction: column;
 }
 
-valign{
-    display: flex;
-    justify-content: space-evenly;
-}

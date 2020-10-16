@@ -8,21 +8,19 @@
                 <div class="card-content">
                     <a class="display_name" href="/user/{{ post.author.id }}"><h2 class="display_name">{{ post.author.display_name }}</h2></a>
                     <a class="username" href="/user/{{ post.author.id }}"><h4 class="username">👤 @{{ post.author.username }}</h4></a>
-                    <p class="date">{{ post.date }}</p>
+                    {% load tz %}
+                    <p class="date">{{ post.date|localtime }}</p>
                 </div>
                 <div class="card-content">
                     <p id="caption">{{ post.caption }}</p>
                 </div>
                     <br>
                     <div class="card-action">
-                    <p style="display:inline;">🧡 {{ post.likes }}</p>
-                    <p style="display:inline;">👎 {{ post.dislikes }}</p>
+                    <p style="display:inline;">❤️ {{ post.likes }}</p>
                     </div>
                     <div class="card-action">
                         <a class="btn-floating waves-effect waves-light red" href="/post/{{ post.id }}/like/">
                             <i class="material-icons">favorite</i></a>
-                        <a class="btn-floating waves-effect waves-light red" href="/post/{{ post.id }}/dislike/">
-                            <i class="material-icons">mood_bad</i></a>
                     </div>
                     <div class="card-action">
                         <a href="/post/{{ post.id }}/">Comments</a>

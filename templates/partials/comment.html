@@ -7,7 +7,7 @@
                         <p>{{comment.text}}</p>
                         
                         {% if comment.creator == request.user or post.author == request.user %}
-                            <a href="/deletecomment/{{comment.id}}/"><button>delete</button></a>
+                            <a href="/deletecomment/{{comment.id}}/"><button>❌</button></a>
                         {% endif %}
                 </li>
                     </li>

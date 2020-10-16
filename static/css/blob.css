@@ -187,3 +187,7 @@ section {
 .menu__link:hover {
   text-decoration: underline;
 }
+.menu nav {
+  background-color: none;
+  display: hidden;
+}

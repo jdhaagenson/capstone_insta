@@ -9,7 +9,6 @@ class Post(models.Model):
     date = models.DateTimeField(default=timezone.now)
     location = models.CharField(max_length=100, null=True, blank=True)
     likes = models.IntegerField(default=0)
-    dislikes = models.IntegerField(default=0)
     author = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -26,3 +25,9 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class PostLikes(models.Model):
+    post = models.ForeignKey(to=Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=InstaUser, on_delete=models.CASCADE)
+    liked = models.BooleanField(default=False)
