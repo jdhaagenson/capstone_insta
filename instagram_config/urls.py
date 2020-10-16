@@ -22,6 +22,9 @@ from post.views import *
 from authentication.views import *
 from notifications.views import *
 
+handler404 = 'post.views.handler404View'
+handler403 = 'post.views.handler403View'
+handler500 = 'post.views.handler500View'
 
 urlpatterns = [
     path('', PostFeedView.as_view(), name='homepage'),
