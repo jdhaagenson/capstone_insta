@@ -22,7 +22,8 @@
         <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
         {% endif %}
         <div id="profile">
-            <h6>About</h6><br>
+            <h6>About</h6>
+            <br />
             <p>{{ profile.bio }}</p>
             <br />
             <br />
@@ -40,7 +41,6 @@
             {% endif %}
             {% endif %}
             {% endif %}
-
                 <br />
                 <p>Following: {{ profile.followers.count }}</p>
                 <ul>
@@ -56,7 +56,7 @@
                     <h3>Posts by {{ profile }}</h3>
                         <div class="gallery">
                             {% for post in posts %}
-                            <a href="/post/{{ post.id }}/"><img class="galleryphoto" src="{{ post.photo.url }}" alt="photo"></a>
+                            <a href="/post/{{ post.id }}/"><img class="gallery-photo" src="{{ post.photo.url }}" alt="photo"></a>
                             {% endfor %}
                         </div>
                 </div>
