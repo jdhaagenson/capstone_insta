@@ -21,7 +21,7 @@
             <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
         {% endif %}
         <div id="profile">
-            <h6>About</h6>
+            <h6>About Me</h6>
             <br />
             <p>{{ profile.bio }}</p>
             <br />
@@ -29,14 +29,15 @@
             {% if user.id == profile.id %}
                 <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/edit"><i class="material-icons">edit</i></a>
                 <a class="btn-floating btn-large waves-effect waves-light light-green" href="/notifications/"><i class="material-icons">notifications_active</i></a>
+                <span class="new badge red">{{ notifications.count }}</span>
             {% endif %}
             <br />
             {% if profile != request.user %}
                 {% if profile.is_authenticated %}
                     {% if profile not in user.followers.all %}
-                        <a href="/user/{{ profile.id }}/follow/"><button id="follow">Follow</button></a>
+                        <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/follow/"><i class="material-icons">person_add</i></a>
                     {% else %}
-                        <a href="/user/{{ profile.id }}/unfollow/"><button id="unfollow">Unfollow</button></a>
+                        <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/unfollow/"><i class="material-icons">person_remove</i></a>
                     {% endif %}
                 {% endif %}
             {% endif %}
@@ -44,8 +45,8 @@
                 <p>Following: {{ profile.followers.count }}</p>
                 <ul>
                     {% for each in profile.followers.all %}
-                    <a href="/user/{{ each.id }}/">{{ each.username }}</a>
-                    <br />
+                        <a href="/user/{{ each.id }}/">{{ each.username }}</a>
+                        <br />
                     {% endfor %}
                 </ul>
                 <p>Posts: {{ posts.count }}</p>
@@ -53,11 +54,11 @@
             <div id="post-container">
                 <div class="posts">
                     <h3>Posts by {{ profile }}</h3>
-                        <div class="gallery">
-                            {% for post in posts %}
+                    <div class="gallery">
+                        {% for post in posts %}
                             <a href="/post/{{ post.id }}/"><img class="gallery-photo" src="{{ post.photo.url }}" alt="photo"></a>
-                            {% endfor %}
-                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
