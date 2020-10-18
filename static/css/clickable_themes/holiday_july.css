@@ -1,0 +1,36 @@
+.theme-fourthOfJuly {
+    --color-primary: #0022dd;
+    --color-secondary: #b10303;
+    --color-light: #ff5757;
+    --color-dark: #0a0a72;
+    --color-neutral: #acabab;
+    --font-color: #f1f1f1;
+    --color-mute: #575757;
+}
+.theme-valentinesDay {
+    --color-primary: #0022dd;
+    --color-secondary: #b10303;
+    --color-light: #ff5757;
+    --color-dark: #0a0a72;
+    --color-neutral: #acabab;
+    --font-color: #f1f1f1;
+    --color-mute: #575757;
+}
+.theme-christmas {
+    --color-primary: #0022dd;
+    --color-secondary: #b10303;
+    --color-light: #ff5757;
+    --color-dark: #0a0a72;
+    --color-neutral: #acabab;
+    --font-color: #f1f1f1;
+    --color-mute: #575757;
+}
+.theme-halloween {
+    --color-primary: #0022dd;
+    --color-secondary: #b10303;
+    --color-light: #ff5757;
+    --color-dark: #0a0a72;
+    --color-neutral: #acabab;
+    --font-color: #f1f1f1;
+    --color-mute: #575757;
+}

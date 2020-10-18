@@ -1,12 +1,21 @@
 /* font-family: 'Open Sans', sans-serif; */
 /* font-family: 'Sansita Swashed', cursive; */
-
+@import url('/static/css/clickable_themes/holiday_july.css');
 /* colors */
 /* a = #F6E1CA
 #F6CAD3
 #D4BCAE
 #D4B1AE
 #EBD4CD */
+.theme-vanilla {
+    --color-primary: #ee6e73;
+    --color-secondary: #73d748;
+    --color-light: #efefef;
+    --color-dark: #504141;
+    --font-color: #1d1d1d;
+    --color-neutral: #d2b48c;
+    --color-mute: #505050;
+}
 
 /* all templates */
 body {
@@ -15,7 +24,7 @@ body {
     grid-template-columns: 120px 50vw 50vw;
     font-family: 'Open Sans', sans-serif;
     line-height: 1.4;
-    /* background-color:  */
+     /*background-color:*/
 
 }
 /* post.html ######################################*/
@@ -34,28 +43,30 @@ body {
 
 .post-container {
     display: flex;
-    background-color: #888888;
-    border: 5px solid gray;
+    background-color: var(--font-color);
+    color: var(--color-secondary);
     margin: 20px;
     width: 500px;
     flex-direction: column;
     align-items: center;
-    border: 5px inset white;
+    border: 5px inset var(--color-primary);
     padding:10px;
-    box-shadow: 1px 1px 10px black;
+    box-shadow: 1px 1px 10px var(--color-dark);
 }
 .postpic {
-    width: minmax(300px, 600px);
+    width: 500px;
+    height: 500px;
 }
 
 .caption {
     font-size: 20px;
     margin-left: 5px;
+    color: var(--color-primary);
 
 }
 .username {
     display:inline;
-    color: #8c5fa1;
+    color: var(--color-secondary);
     text-decoration: none;
     font-style: italic;
     font-size: small;
@@ -69,12 +80,13 @@ body {
     text-decoration: none;
     align-self: flex-start;
     font-family: 'Sansita Swashed', cursive;
+    color: var(--color-primary);
 }
 
 .date {
     font-size: 12px;
     display: inline;
-
+    color: var(--color-mute);
 }
 
 /* post details #########################################*/
@@ -88,19 +100,21 @@ body {
 .comments {
     display: flex;
     grid-column: 2;
-    background-color: #eeeeee;
+    background-color: var(--color-neutral);
 }
 
 #right {
     display: flex;
     width: 500px;
     flex-direction: column;
+    background-color: var(--color-light);
 }
 #left {
     display: flex;
     width: 40vw;
     margin-left: 150px;
-    flex-direction: column
+    flex-direction: column;
+    background-color: var(--color-primary);
 }
 .commentform {
     grid-area: b
@@ -112,8 +126,8 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 10px;
     width: 150px;
-    background: linear-gradient(darkgray, black);
-    color: white
+    background: linear-gradient(var(--color-primary), var(--color-secondary));
+    color: var(--font-color);
 }
 .post-likes {
     display: inline;
@@ -123,6 +137,7 @@ body {
 
 .card {
     width:500px;
+    background-color: var(--color-light);
 }
 .card-content {
     margin: 5px;
@@ -136,4 +151,22 @@ body {
     display: inline;
     flex-direction: column;
 }
-
+  .container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: var(--color-secondary);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container h1 {
+    color: var(--font-color);
+  }
+  .container button {
+    color: var(--font-color);
+    background: var(--color-primary);
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 5px;
+  }

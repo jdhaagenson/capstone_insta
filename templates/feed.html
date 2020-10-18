@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 {% include './partials/head.html' %}
 <body>
     {% include './blobmenu.html' %}
@@ -8,7 +6,17 @@
     </div>
     <div id="list-users">
         {% include './partials/users.html' %}
+        <br>
+        <h6>Holiday Themes</h6>
+        <nav>
+            <button id="vanilla-button" class="theme-button" onclick="toggleTheme('theme-vanilla')">Vanilla</button>
+            <button id="feb-button" class="theme-button" onclick="toggleTheme('theme-valentinesDay')"><img src="/static/images/feb-theme-button.jpg" alt="feb"></button>
+            <button id="jul-button" class="theme-button" onclick="toggleTheme('theme-fourthOfJuly')"><img src="/static/images/jul-theme-button.jpg" alt="jul"></button>
+            <button id="oct-button" class="theme-button" onclick="toggleTheme('theme-halloween')"><img src="/static/images/oct-theme-button.jpg" alt="oct"></button>
+            <button id="dec-button" class="theme-button" onclick="toggleTheme('theme-christmas')"><img src="/static/images/dec-theme-button.jpg" alt="dec"></button>
+        </nav>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/static/theme-switcher.js"></script>
 </body>
 </html>

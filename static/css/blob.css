@@ -188,6 +188,6 @@ section {
   text-decoration: underline;
 }
 .menu nav {
-  background-color: none;
-  display: hidden;
+  background-color: unset;
+
 }
