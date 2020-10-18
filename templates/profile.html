@@ -29,7 +29,7 @@
             {% if user.id == profile.id %}
                 <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/edit"><i class="material-icons">edit</i></a>
                 <a class="btn-floating btn-large waves-effect waves-light light-green" href="/notifications/"><i class="material-icons">notifications_active</i></a>
-                <span class="new badge red">{{ notifications.count }}</span>
+                <span class="new badge red" data-badge-caption="{{ notifications.count }}"></span>
             {% endif %}
             <br />
             {% if profile != request.user %}
