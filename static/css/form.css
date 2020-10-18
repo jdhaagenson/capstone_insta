@@ -3,16 +3,13 @@
 }
 body{
     text-align: center;
-
 }
-
  .card {
     display: block;
     place-items: center;
     position: fixed;
     left: 500px;
 }
-
 form {
     width: 100%;
     max-width: 330px;

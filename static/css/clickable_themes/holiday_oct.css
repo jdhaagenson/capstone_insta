@@ -1,4 +1,5 @@
+/* Halloween Theme */
 * {
-    background-image: url('/static/images/halloween-bg.png');
-    background-repeat: repeat;
+  background-image: url("/static/images/halloween-bg.png");
+  background-repeat: repeat;
 }
