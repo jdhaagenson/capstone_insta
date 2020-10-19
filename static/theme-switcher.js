@@ -1,7 +1,11 @@
+let htmltag = document.getElementById('htmltag')
+
+
 //function sets given theme/color-scheme
 const setTheme = themeName => {
-    localStorage.setItem('theme', themeName);
-    document.documentElement.className = themeName;
+    htmltag.setAttribute('class', themeName)
+    localStorage.setItem('class', themeName)
+
 }
 
 // function to toggle between themes
@@ -26,29 +30,29 @@ const toggleTheme = () => {
     if (localStorage.getItem('theme') === 'theme-vanilla') {
         return setTheme('theme-vanilla')
     } else {
-        return toggleTheme()
+        return setTheme()
     }
 })();
 
 //click handler
-vanilla_button = document.getElementById('vanilla-button')
-feb_button = document.getElementById('feb-button')
-jul_button = document.getElementById('jul-button')
-oct_button = document.getElementById('oct-button')
-dec_button = document.getElementById('dec-button')
+let vanilla_button = document.getElementById('vanilla-button')
+let feb_button = document.getElementById('feb-button')
+let jul_button = document.getElementById('jul-button')
+let oct_button = document.getElementById('oct-button')
+let dec_button = document.getElementById('dec-button')
 
 vanilla_button.addEventListener('onclick', function(){
-    return toggleTheme('theme-vanilla')
+    return setTheme('theme-vanilla')
 })
 feb_button.addEventListener('onclick',function(){
-    return toggleTheme('theme-valentinesDay')
+    return setTheme('theme-valentinesDay')
 })
 jul_button.addEventListener('onclick', function(){
-    return toggleTheme('theme-fourthOfJuly')
+    return setTheme('theme-fourthOfJuly')
 })
 oct_button.addEventListener('onclick', function(){
-    return toggleTheme('theme-halloween')
+    return setTheme('theme-halloween')
 })
 dec_button.addEventListener('onclick', function(){
-    return toggleTheme('theme-christmas')
+    return setTheme('theme-christmas')
 })

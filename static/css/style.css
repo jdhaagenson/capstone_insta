@@ -16,6 +16,7 @@ a = #F6E1CA
     --font-color: #1d1d1d;
     --color-neutral: #d2b48c;
     --color-mute: #505050;
+    --background-image: white;
 }
 
 /* all templates */
@@ -56,6 +57,7 @@ body {
 .postpic {
     width: 500px;
     height: 500px;
+    padding:5px;
 }
 
 .caption {
@@ -161,3 +163,31 @@ body {
     border: 0;
     border-radius: 5px;
   }
+
+.theme-button {
+    width: 50px;
+    height: 50px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    font-size:small;
+    margin:20px;
+
+}
+
+.bg-2{
+    background-image: url('/static/images/feb-theme-button.jpg');
+    background-size: contain;
+}
+.bg-7 {
+    background-image: url('/static/images/jul-theme-button.jpg');
+    background-size: contain;
+}
+.bg-10 {
+    background-image: url('/static/images/oct-theme-button.jpg');
+    background-size: contain;
+}
+.bg-12 {
+    background-image: url('/static/images/dec-theme-button.png');
+    background-size: contain;
+}

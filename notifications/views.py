@@ -9,6 +9,9 @@ import copy
 @login_required
 def notification_view(request):
     notifications = Notification.objects.filter(alert_for=request.user.id)
+    count = notifications.count()
     notifications_copy = copy.copy(notifications)
     Notification.objects.filter(alert_for=request.user.id).delete()
-    return render(request, 'notifications.html',{'notifications': notifications_copy})
+    return render(request, 'notifications.html',{'notifications': notifications_copy,
+                                                 'count': count,
+    })

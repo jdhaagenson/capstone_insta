@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en" id="htmltag" class="theme-vanilla">
 {% include './partials/head.html' %}
 <body>
     {% include './blobmenu.html' %}
@@ -8,15 +10,42 @@
         {% include './partials/users.html' %}
         <br>
         <h6>Holiday Themes</h6>
-        <nav>
-            <button id="vanilla-button" class="theme-button" onclick="toggleTheme('theme-vanilla')">Vanilla</button>
-            <button id="feb-button" class="theme-button" onclick="toggleTheme('theme-valentinesDay')"><img src="/static/images/feb-theme-button.jpg" alt="feb"></button>
-            <button id="jul-button" class="theme-button" onclick="toggleTheme('theme-fourthOfJuly')"><img src="/static/images/jul-theme-button.jpg" alt="jul"></button>
-            <button id="oct-button" class="theme-button" onclick="toggleTheme('theme-halloween')"><img src="/static/images/oct-theme-button.jpg" alt="oct"></button>
-            <button id="dec-button" class="theme-button" onclick="toggleTheme('theme-christmas')"><img src="/static/images/dec-theme-button.jpg" alt="dec"></button>
-        </nav>
+        <div>
+            <button id="vanilla-button" class="theme-button" onclick="setTheme('theme-vanilla')"></button>
+            <button id="feb-button" class="theme-button bg-2" onclick="setTheme('theme-valentinesDay')"></button>
+            <button id="jul-button" class="theme-button bg-7" onclick="setTheme('theme-fourthOfJuly')"></button>
+            <button id="oct-button" class="theme-button bg-10" onclick="setTheme('theme-halloween')"></button>
+            <button id="dec-button" class="theme-button bg-12" onclick="setTheme('theme-christmas')"></button>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="/static/theme-switcher.js"></script>
+    <script src="/static/theme-switcher.js">
+        const setTheme = themeName => {
+            localStorage.setItem('theme', themeName);
+            document.documentElement.className = themeName;
+}
+let vanilla_button = document.getElementById('vanilla-button')
+let feb_button = document.getElementById('feb-button')
+let jul_button = document.getElementById('jul-button')
+let oct_button = document.getElementById('oct-button')
+let dec_button = document.getElementById('dec-button')
+
+vanilla_button.addEventListener('onclick', function(){
+    return setTheme('theme-vanilla')
+})
+feb_button.addEventListener('onclick',function(){
+    return setTheme('theme-valentinesDay')
+})
+jul_button.addEventListener('onclick', function(){
+    return setTheme('theme-fourthOfJuly')
+})
+oct_button.addEventListener('onclick', function(){
+    return setTheme('theme-halloween')
+})
+dec_button.addEventListener('onclick', function(){
+    return setTheme('theme-christmas')
+})
+
+    </script>
 </body>
 </html>
