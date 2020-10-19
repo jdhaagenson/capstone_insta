@@ -1,40 +1,40 @@
 .theme-fourthOfJuly {
-    --color-primary: #0022dd;
-    --color-secondary: #b10303;
-    --color-light: #ff5757;
-    --color-dark: #0a0a72;
-    --color-neutral: #acabab;
-    --font-color: #2a2a2a;
-    --color-mute: #575757;
-    --bg: url('/static/images/jul-theme-button.jpg');
+  --color-primary: #0022dd;
+  --color-secondary: #b10303;
+  --color-light: #ff5757;
+  --color-dark: #0a0a72;
+  --color-neutral: #acabab;
+  --font-color: #2a2a2a;
+  --color-mute: #575757;
+  --bg: url("/static/images/jul-theme-button.jpg");
 }
 .theme-valentinesDay {
-    --color-primary: #8a0a2c;
-    --color-secondary: #e24767;
-    --color-light: #e4cdd3;
-    --color-dark: #341847;
-    --color-neutral: #b336e0;
-    --font-color: #111;
-    --color-mute: #575757;
-    --bg: url('/static/images/feb-theme-button.jpg');
+  --color-primary: #ff0000;
+  --color-secondary: #f794cc;
+  --color-light: #ffdae9;
+  --color-dark: #ff0000;
+  --color-neutral: #f794cc;
+  --font-color: #111;
+  --color-mute: #575757;
+  --bg: url("/static/images/vday4.jpg");
 }
 .theme-christmas {
-    --color-primary: #;
-    --color-secondary: #;
-    --color-light: #;
-    --color-dark: #;
-    --color-neutral: #;
-    --font-color: #;
-    --color-mute: #;
-    --bg: url('/static/images/dec-theme-button.png');
+  --color-primary: #;
+  --color-secondary: #;
+  --color-light: #;
+  --color-dark: #;
+  --color-neutral: #;
+  --font-color: #;
+  --color-mute: #;
+  --bg: url("/static/images/dec-theme-button.png");
 }
 .theme-halloween {
-    --bg: url("/static/images/halloween-bg.png");
-    --color-primary: #0d0a09;
-    --color-secondary: #e59400;
-    --color-light: #e5e5e5;
-    --color-dark: #0d0a09;
-    --color-neutral: #191000;
-    --font-color: #ffae19;
-    --color-mute: #b27300;
+  --bg: url("/static/images/halloween-bg.png");
+  --color-primary: #0d0a09;
+  --color-secondary: #e59400;
+  --color-light: #e5e5e5;
+  --color-dark: #0d0a09;
+  --color-neutral: #191000;
+  --font-color: #ffae19;
+  --color-mute: #b27300;
 }
