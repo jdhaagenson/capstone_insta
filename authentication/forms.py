@@ -8,7 +8,7 @@ class AddUserForm(forms.ModelForm):
     profile_pic = forms.ImageField(widget=forms.ClearableFileInput)
     class Meta:
         model = InstaUser
-        fields = ["username", "display_name", 'profile_pic', 'bio', "password"]
+        fields = ["username", "email", "display_name", 'profile_pic', 'bio', "password"]
 
 
 class LoginForm(forms.Form):

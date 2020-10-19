@@ -16,17 +16,17 @@
     --color-neutral: #b336e0;
     --font-color: #111;
     --color-mute: #575757;
-    --bg: url('/static/images/feb-theme-button.jpg');
+    --bg: url('/static/valentines.jpg');
 }
 .theme-christmas {
     --color-primary: #ec3535;
-    --color-secondary: #00e400;
-    --color-light: #60a0e9;
+    --color-secondary: #02af02;
+    --color-light: #9fd95d;
     --color-dark: #19266b;
     --color-neutral: #191000;
     --font-color: #000000;
     --color-mute: #888888;
-    --bg: url('/static/images/dec-theme-button.png');
+    --bg: url('/static/xmas4.jpg');
 }
 .theme-halloween {
     --bg: url("/static/images/halloween-bg.png");

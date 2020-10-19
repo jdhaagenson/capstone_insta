@@ -36,6 +36,8 @@ body {
     display: grid;
     grid-column: 0vw 120px 120px 100vw;
     background-image: var(--bg);
+    border-left: 10px solid var(--color-secondary);
+
 }
 
 
@@ -215,6 +217,7 @@ body {
     background-color: var(--color-secondary);
     border-radius: 5px;
     border: 2px solid var(--color-primary);
-    width: 300px;
+    width: 400px;
     margin-bottom: 10px;
+    padding:10px;
 }
