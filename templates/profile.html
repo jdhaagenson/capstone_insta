@@ -3,50 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>InstaDay</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Sansita+Swashed:wght@300&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/static/css/profile.css" />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
   </head>
   <body>
     <div id="toolbar">{% include './blobmenu.html' %}</div>
     <div id="profile-container">
         {% if profile.profile_pic.url is not None %}
-        <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
-        <img class="profile-pic" src="{{ profile.profile_pic.url }}/" alt="photo" />
+            <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
+            <img class="profile-pic" src="{{ profile.profile_pic.url }}/" alt="photo" />
         {% else %}
-        <img class="profile-pic" src="/static/images/blank_user.jpg" alt="photo" />
-        <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
+            <img class="profile-pic" src="/static/images/blank_user.jpg" alt="photo" />
+            <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
         {% endif %}
         <div id="profile">
-            <h6>About</h6><br>
+            <h6>About Me</h6>
+            <br />
             <p>{{ profile.bio }}</p>
             <br />
             <br />
             {% if user.id == profile.id %}
-            <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/edit"><i class="material-icons">edit</i></a>
-            <a class="btn-floating btn-large waves-effect waves-light light-green" href="/notifications/"><i class="material-icons">notifications_active</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/edit"><i class="material-icons">edit</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light light-green" href="/notifications/"><i class="material-icons">notifications_active</i></a>
+                <span class="new badge red" data-badge-caption="{{ notifications.count }}"></span>
             {% endif %}
             <br />
             {% if profile != request.user %}
-            {% if profile.is_authenticated %}
-            {% if profile not in user.followers.all %}
-            <a href="/user/{{ profile.id }}/follow/"><button id="follow">Follow</button></a>
-            {% else %}
-            <a href="/user/{{ profile.id }}/unfollow/"><button id="unfollow">Unfollow</button></a>
+                {% if profile.is_authenticated %}
+                    {% if profile not in user.followers.all %}
+                        <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/follow/"><i class="material-icons">person_add</i></a>
+                    {% else %}
+                        <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/unfollow/"><i class="material-icons">person_remove</i></a>
+                    {% endif %}
+                {% endif %}
             {% endif %}
-            {% endif %}
-            {% endif %}
-
                 <br />
                 <p>Following: {{ profile.followers.count }}</p>
                 <ul>
                     {% for each in profile.followers.all %}
-                    <a href="/user/{{ each.id }}/">{{ each.username }}</a>
-                    <br />
+                        <a href="/user/{{ each.id }}/">{{ each.username }}</a>
+                        <br />
                     {% endfor %}
                 </ul>
                 <p>Posts: {{ posts.count }}</p>
@@ -54,11 +54,11 @@
             <div id="post-container">
                 <div class="posts">
                     <h3>Posts by {{ profile }}</h3>
-                        <div class="gallery">
-                            {% for post in posts %}
-                            <a href="/post/{{ post.id }}/"><img class="galleryphoto" src="{{ post.photo.url }}" alt="photo"></a>
-                            {% endfor %}
-                        </div>
+                    <div class="gallery">
+                        {% for post in posts %}
+                            <a href="/post/{{ post.id }}/"><img class="gallery-photo" src="{{ post.photo.url }}" alt="photo"></a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
