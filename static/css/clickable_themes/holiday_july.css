@@ -19,14 +19,14 @@
     --bg: url('/static/images/feb-theme-button.jpg');
 }
 .theme-christmas {
-    --color-primary: #;
-    --color-secondary: #;
-    --color-light: #;
-    --color-dark: #;
-    --color-neutral: #;
-    --font-color: #;
-    --color-mute: #;
-    --bg: url('/static/images/dec-theme-button.png');
+    --color-primary: #ff0000;
+    --color-secondary: #00ff00;
+    --color-light: #e5e5e5;
+    --color-dark: #0d0a09;
+    --color-neutral: #191000;
+    --font-color: #000000;
+    --color-mute: #666666;
+    --background-image: url('/static/images/dec-theme-button.png');
 }
 .theme-halloween {
     background-image: url("/static/images/halloween-bg.png");
