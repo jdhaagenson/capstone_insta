@@ -152,7 +152,7 @@ body {
     display: flex;
     flex-direction: column;
     background-image: var(--bg);
-    border-left: 10px solid var(--color-dark);
+    border-left: 10px solid var(--color-secondary);
     padding-left: 20px;
 }
 #list-users img, p {

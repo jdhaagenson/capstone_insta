@@ -6,7 +6,7 @@
     --color-neutral: #acabab;
     --font-color: #f1f1f1;
     --color-mute: #575757;
-    --bg: url('/static/gif4thjuly.gif');
+    --bg: url('/static/images/jul-theme-button.jpg');
 }
 .theme-valentinesDay {
     --color-primary: #;
@@ -29,12 +29,13 @@
     --bg: url('/static/images/dec-theme-button.png');
 }
 .theme-halloween {
-    --color-primary: #;
-    --color-secondary: #;
-    --color-light: #;
-    --color-dark: #;
-    --color-neutral: #;
-    --font-color: #;
-    --color-mute: #;
-    --bg: url('/static/images/oct-theme-button.jpg');
+    background-image: url("/static/images/halloween-bg.png");
+    --color-primary: #0d0a09;
+    background-repeat: repeat;
+    --color-secondary: #e59400;
+    --color-light: #e5e5e5;
+    --color-dark: #0d0a09;
+    --color-neutral: #191000;
+    --font-color: #ffae19;
+    --color-mute: #b27300;
 }
