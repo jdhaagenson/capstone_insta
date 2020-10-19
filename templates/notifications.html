@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmltag" class="theme-vanilla">
 {% include './partials/head.html' %}
 <body>
     {% include "./blobmenu.html" %}
@@ -21,7 +21,7 @@
             {% endfor %}
         <span>go <a href="/user/{{request.user.id}}">back to profile</a></span>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {% include './partials/scripts.html' %}
 </body>
 </html>
 

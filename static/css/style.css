@@ -1,13 +1,5 @@
-/* font-family: 'Open Sans', sans-serif; */
-/* font-family: 'Sansita Swashed', cursive; */
 @import url('/static/css/clickable_themes/holiday_july.css');
-/* colors */
-/*
-a = #F6E1CA
-#F6CAD3
-#D4BCAE
-#D4B1AE
-#EBD4CD */
+
 .theme-vanilla {
     --color-primary: #ee6e73;
     --color-secondary: #73d748;
@@ -16,20 +8,39 @@ a = #F6E1CA
     --font-color: #1d1d1d;
     --color-neutral: #d2b48c;
     --color-mute: #505050;
-    --background-image: white;
+    --bg: url('/static/defaultbg.jpg');
 }
+
+/* font-family: 'Open Sans', sans-serif; */
+/* font-family: 'Sansita Swashed', cursive; */
+
+/* colors */
+/*
+a = #F6E1CA
+#F6CAD3
+#D4BCAE
+#D4B1AE
+#EBD4CD */
 
 /* all templates */
 body {
-    background-image: url('/static/images/newpost.gif/');
     display: grid;
     grid-template-columns: 120px 50vw 50vw;
     font-family: 'Open Sans', sans-serif;
     line-height: 1.4;
+    background-image: var(--bg);
+    background-color: var(--color-primary);
+    /*color: var(--font-color);*/
 }
 #feed {
     display: grid;
     grid-column: 0vw 120px 120px 100vw;
+    background-image: var(--bg)
+}
+
+
+.btn-floating {
+    background-color: var(--color-dark) !important;
 }
 
 /* post.html */
@@ -95,17 +106,18 @@ body {
     align-items: stretch;
     justify-content: left;
     align-content:space-around;
+    background-color: var(--color-primary);
 }
 .comments {
     display: flex;
     grid-column: 2;
-    background-color: var(--color-neutral);
+    background-color: var(--color-light);
 }
 #right {
     display: flex;
     width: 500px;
     flex-direction: column;
-    background-color: var(--color-light);
+    background-color: var(--color-secondary);
 }
 #left {
     display: flex;
@@ -139,6 +151,9 @@ body {
 #list-users {
     display: flex;
     flex-direction: column;
+    background-image: var(--bg);
+    border-left: 10px solid var(--color-dark);
+    padding-left: 20px;
 }
 #list-users img, p {
     display: inline;
@@ -168,9 +183,11 @@ body {
     height: 50px;
     padding: 10px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     font-size:small;
-    margin:20px;
+    margin:10px;
+    border-radius: 100px;
+    border: 1px solid var(--color-primary);
 
 }
 

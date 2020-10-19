@@ -19,32 +19,8 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="/static/theme-switcher.js">
-        const setTheme = themeName => {
-            localStorage.setItem('theme', themeName);
-            document.documentElement.className = themeName;
-}
-let vanilla_button = document.getElementById('vanilla-button')
-let feb_button = document.getElementById('feb-button')
-let jul_button = document.getElementById('jul-button')
-let oct_button = document.getElementById('oct-button')
-let dec_button = document.getElementById('dec-button')
-
-vanilla_button.addEventListener('onclick', function(){
-    return setTheme('theme-vanilla')
-})
-feb_button.addEventListener('onclick',function(){
-    return setTheme('theme-valentinesDay')
-})
-jul_button.addEventListener('onclick', function(){
-    return setTheme('theme-fourthOfJuly')
-})
-oct_button.addEventListener('onclick', function(){
-    return setTheme('theme-halloween')
-})
-dec_button.addEventListener('onclick', function(){
-    return setTheme('theme-christmas')
-})
 
     </script>
 </body>

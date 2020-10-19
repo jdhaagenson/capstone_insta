@@ -1,4 +1,4 @@
-<html>
+<html lang="en" id="htmltag" class="theme-vanilla">
     <head>
     <link rel="stylesheet" href="/static/css/form.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -12,6 +12,6 @@
             {{ form.as_p }}
             <input type="submit" value="Submit">
         </form>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        {% include './partials/scripts.html' %}
     </body>
 </html>

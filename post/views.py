@@ -10,6 +10,7 @@ from instauser.models import InstaUser
 from django.contrib.auth import get_user
 from django.urls import reverse_lazy
 from helpers.helper_functions import get_tags
+from django.http import JsonResponse
 
 
 def handler404View(request, exception, template_name="404.html"):
@@ -22,7 +23,7 @@ def handler500View(request):
 
 
 def handler403View(request, exception):
-    return render(request, 'forbidden.html')
+    return render(request, '403.html')
 
 
 class PostFeedView(TemplateView):
@@ -115,22 +116,24 @@ class FollowPostView(TemplateView):
 def like_post(request, postid):
     post = Post.objects.get(pk=postid)
     user = get_user(request)
-    obj, created = PostLikes.objects.get_or_create(
-        user=user,
-        post=post
-    )
-    if obj.liked:
-        post.likes -= 1
-        post.save()
-        obj.liked = False
-        obj.save()
-    if not obj.liked:
+    if PostLikes.objects.get_or_create(post_id=postid, user=user):
+        liked = PostLikes.objects.get(post=post, user=user)
+        if liked.liked:
+            post.likes -= 1
+            liked.liked = False
+            post.save()
+            liked.save()
+        else:
+            post.likes += 1
+            liked.liked = True
+            post.save()
+            liked.save()
+    else:
+        tolike = PostLikes.objects.create(post=post, user=user)
+        tolike.liked = True
         post.likes += 1
         post.save()
-        obj.liked = True
-        obj.save()
-
-
+        tolike.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','homepage'))
 
 

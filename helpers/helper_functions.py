@@ -12,3 +12,4 @@ def get_tags(text):
             if user:
                 tags.append(tag)
     return tags
+

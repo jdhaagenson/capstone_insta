@@ -5,9 +5,15 @@ let htmltag = document.getElementById('htmltag')
 const setTheme = themeName => {
     htmltag.setAttribute('class', themeName)
     localStorage.setItem('class', themeName)
-
 }
 
+
+// var xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//
+//     }
+// }
 // function to toggle between themes
 const toggleTheme = () => {
     switch (localStorage.getItem('theme')) {
