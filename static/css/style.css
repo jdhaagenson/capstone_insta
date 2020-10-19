@@ -1,12 +1,12 @@
 @import url('/static/css/clickable_themes/holiday_july.css');
 
 .theme-vanilla {
-    --color-primary: #ee6e73;
-    --color-secondary: #73d748;
-    --color-light: #efefef;
-    --color-dark: #504141;
-    --font-color: #1d1d1d;
-    --color-neutral: #d2b48c;
+    --color-primary: #8298ba;
+    --color-secondary: #efa184;
+    --color-light: #bfeaee;
+    --color-dark: #365687;
+    --font-color: #1e1e1e;
+    --color-neutral: #ba8982;
     --color-mute: #505050;
     --bg: url('/static/defaultbg.jpg');
 }
@@ -35,7 +35,7 @@ body {
 #feed {
     display: grid;
     grid-column: 0vw 120px 120px 100vw;
-    background-image: var(--bg)
+    background-image: var(--bg);
 }
 
 
@@ -187,6 +187,7 @@ body {
     font-size:small;
     margin:10px;
     border-radius: 100px;
+    background-color: var(--color-light)
     border: 1px solid var(--color-primary);
 
 }
@@ -206,4 +207,14 @@ body {
 .bg-12 {
     background-image: url('/static/images/dec-theme-button.png');
     background-size: contain;
+}
+.menu {
+    background-image: var(--bg);
+}
+.user-list {
+    background-color: var(--color-secondary);
+    border-radius: 5px;
+    border: 2px solid var(--color-primary);
+    width: 300px;
+    margin-bottom: 10px;
 }

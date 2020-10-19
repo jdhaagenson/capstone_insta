@@ -1,6 +1,6 @@
 {% for user in all_users %}
 <div class="valign-wrapper valign">
-    <a href="/user/{{ user.id }}/">
+    <a class="user-list" href="/user/{{ user.id }}/">
         {% if user.profile_pic.url is not None %}
             <img style="width:75px; height:75px;border-radius: 100px;" src="{{ user.profile_pic.url }}" alt="profile-photo">
         {% else %}
