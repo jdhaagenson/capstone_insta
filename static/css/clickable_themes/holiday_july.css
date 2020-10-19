@@ -19,13 +19,13 @@
     --bg: url('/static/images/feb-theme-button.jpg');
 }
 .theme-christmas {
-    --color-primary: #;
-    --color-secondary: #;
-    --color-light: #;
-    --color-dark: #;
-    --color-neutral: #;
-    --font-color: #;
-    --color-mute: #;
+    --color-primary: #ec3535;
+    --color-secondary: #00e400;
+    --color-light: #60a0e9;
+    --color-dark: #19266b;
+    --color-neutral: #191000;
+    --font-color: #000000;
+    --color-mute: #888888;
     --bg: url('/static/images/dec-theme-button.png');
 }
 .theme-halloween {
