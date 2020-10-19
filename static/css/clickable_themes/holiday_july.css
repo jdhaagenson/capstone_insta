@@ -20,13 +20,13 @@
 }
 .theme-christmas {
     --color-primary: #ec3535;
-    --color-secondary: #02af02;
+    --color-secondary: #086508;
     --color-light: #9fd95d;
     --color-dark: #19266b;
     --color-neutral: #191000;
     --font-color: #000000;
     --color-mute: #888888;
-    --bg: url('/static/xmas4.jpg');
+    --bg: url('/static/xmas3.jpg');
 }
 .theme-halloween {
     --bg: url("/static/images/halloween-bg.png");
