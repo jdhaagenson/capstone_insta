@@ -30,6 +30,7 @@ class CreateUser(CreateView):
             )
             obj.save()
 
+
             return HttpResponseRedirect(reverse('homepage'))
         return render(request, self.template_name, {'form': form})
 
