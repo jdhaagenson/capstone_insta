@@ -2,7 +2,8 @@
 /* font-family: 'Sansita Swashed', cursive; */
 @import url('/static/css/clickable_themes/holiday_july.css');
 /* colors */
-/* a = #F6E1CA
+/*
+a = #F6E1CA
 #F6CAD3
 #D4BCAE
 #D4B1AE
@@ -24,14 +25,13 @@ body {
     grid-template-columns: 120px 50vw 50vw;
     font-family: 'Open Sans', sans-serif;
     line-height: 1.4;
-     /*background-color:*/
-
 }
-/* post.html ######################################*/
 #feed {
     display: grid;
     grid-column: 0vw 120px 120px 100vw;
 }
+
+/* post.html */
 .postpic {
     max-width: 50vw;
     max-height: 50vw;
@@ -39,8 +39,8 @@ body {
     display: flex;
     image-rendering: crisp-edges;
     shape-image-threshold: auto;
+    width: minmax(300px, 600px);
 }
-
 .post-container {
     display: flex;
     background-color: var(--font-color);
@@ -72,7 +72,6 @@ body {
     font-size: small;
     align-self: flex-start;
 }
-
 .display_name {
     display:inline;
     font-size:medium;
@@ -82,27 +81,24 @@ body {
     font-family: 'Sansita Swashed', cursive;
     color: var(--color-primary);
 }
-
 .date {
     font-size: 12px;
     display: inline;
     color: var(--color-mute);
 }
 
-/* post details #########################################*/
+/* post details */
 #details-background {
     display: flex;
     align-items: stretch;
     justify-content: left;
     align-content:space-around;
-    
 }
 .comments {
     display: flex;
     grid-column: 2;
     background-color: var(--color-neutral);
 }
-
 #right {
     display: flex;
     width: 500px;
@@ -116,10 +112,6 @@ body {
     flex-direction: column;
     background-color: var(--color-primary);
 }
-.commentform {
-    grid-area: b
-}
-
 .like-link {
     text-decoration: none;
     font-size: 18px;
@@ -133,8 +125,6 @@ body {
     display: inline;
     flex-direction: row;
 }
-
-
 .card {
     width:500px;
     background-color: var(--color-light);
@@ -142,11 +132,12 @@ body {
 .card-content {
     margin: 5px;
 }
+
+/* List of Users */
 #list-users {
     display: flex;
     flex-direction: column;
 }
-
 #list-users img, p {
     display: inline;
     flex-direction: column;

@@ -1,29 +1,27 @@
 body {
-    text-align: center;
+  text-align: center;
 }
 .loginbox {
-     position: relative;
-    /*background-color: white;*/
-    width: 100%;
-    place-self: center;
-    max-width: 330px;
-    top:100px;
-    background-color: whitesmoke;
-    border: 10px solid thistle ;
-    box-shadow: 1px 1px 5px black;
-    padding: 15px;
-    font-family: "Helvetica";
-    text-align: center;
-    margin: auto;
+  position: relative;
+  width: 100%;
+  place-self: center;
+  max-width: 330px;
+  top: 100px;
+  background-color: whitesmoke;
+  border: 10px solid thistle;
+  box-shadow: 1px 1px 5px black;
+  padding: 15px;
+  font-family: "Helvetica";
+  text-align: center;
+  margin: auto;
 }
 .error {
-    color: red;
-
+  color: red;
 }
 form {
-    max-width: 330px;
-    padding: 15px;
+  max-width: 330px;
+  padding: 15px;
 }
 #signup {
-    margin: 10px;
+  margin: 10px;
 }
