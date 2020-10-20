@@ -1,9 +1,8 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse
+from django.shortcuts import render, HttpResponseRedirect, reverse
 from .models import Post, Comment, PostLikes
 from notifications.models import Notification
 from .forms import PostForm, CommentForm
-from django.views import View
-from django.views.generic import DetailView, CreateView, FormView, TemplateView, ListView, DeleteView
+from django.views.generic import CreateView, TemplateView, DeleteView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from instauser.models import InstaUser

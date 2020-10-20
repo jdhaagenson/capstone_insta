@@ -1,15 +1,10 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from instauser.models import InstaUser
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView
 from django.contrib.auth import get_user
 from post import models
 from instauser.forms import EditProfileForm
 from notifications.models import Notification
-
-
-# Create your views here.
 
 
 @login_required
@@ -52,20 +47,19 @@ def ProfileView(request, user_id):
 
 @login_required
 def edit_profile(request, user_id):
-    edit_profile = InstaUser.objects.get(id=user_id)
+    edit = InstaUser.objects.get(id=user_id)
     if request.method == "POST":
         form = EditProfileForm(request.POST, request.FILES)
         if form.is_valid():
             data = form.cleaned_data
-            edit_profile.profile_pic = data["profile_pic"]
-            # breakpoint()
-            edit_profile.display_name = data["display_name"]
-            edit_profile.bio = data["bio"]
-            edit_profile.save()
-        return HttpResponseRedirect(reverse("profile", args=[edit_profile.id]))
+            edit.profile_pic = data["profile_pic"]
+            edit.display_name = data["display_name"]
+            edit.bio = data["bio"]
+            edit.save()
+        return HttpResponseRedirect(reverse("profile", args=[edit.id]))
     data = {
-        "display_name": edit_profile.display_name,
-        "bio": edit_profile.bio,
+        "display_name": edit.display_name,
+        "bio": edit.bio,
     }
     form = EditProfileForm(initial=data)
     return render(request, "edit.html", {"form": form})
