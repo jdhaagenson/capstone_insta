@@ -6,7 +6,7 @@
         {% else %}
             <img style="width:75px; height:75px;border-radius: 100px;" src="/static/images/blank_user.jpg" alt="profile-photo">
         {% endif %}
-        <span style="font-weight: bold; display:inline; ">{{ user.display_name }}</span><span style="font-weight: light; font-style: italic; display:inline; "> @{{ user.username }}</span>
+        <span class="display_name">{{ user.display_name }}</span><span class="username"> @{{ user.username }}</span>
     </a>
     <hr>
 </div>
