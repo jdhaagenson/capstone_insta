@@ -30,11 +30,11 @@
 }
 .theme-halloween {
     --bg: url("/static/images/halloween-bg.png");
-    --color-primary: #0d0a09;
+    --color-primary: #601368;
     --color-secondary: #e59400;
-    --color-light: #e5e5e5;
+    --color-light: #64d77d;
     --color-dark: #0d0a09;
     --color-neutral: #191000;
     --font-color: #ffae19;
-    --color-mute: #b27300;
+    --color-mute: #524e47;
 }
