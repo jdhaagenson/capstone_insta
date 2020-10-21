@@ -178,7 +178,7 @@ def delete_all_comments(request, postid):
 @login_required
 def delete_comment(request, commentid):
     comment = Comment.objects.get(id=commentid).delete()
-    return HttpResponseRedirect(reverse('homepage'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER','homepage'))
 
 
 @login_required

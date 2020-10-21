@@ -129,7 +129,7 @@ body {
 }
 #left {
     display: flex;
-    width: 40vw;
+    /*width: 40vw;*/
     margin-left: 150px;
     flex-direction: column;
     background-color: var(--color-dark);
