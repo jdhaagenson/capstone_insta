@@ -1,6 +1,4 @@
 from instauser.models import InstaUser
-from post.models import Post
-
 
 
 def get_tags(text):

@@ -2,12 +2,16 @@
         <ul>
             {% for comment in comments %}
                 {% if comment.tweet.id == tweet.id %}
-                    <li>
-                        <p>{{comment.creator}}</p><p>{{ comment.date }}</p>
-                        <p>{{comment.text}}</p>
+                    <li class="comment">
                         {% if comment.creator == request.user or post.author == request.user %}
-                            <a href="/deletecomment/{{ comment.id }}/"><button>❌</button></a>
+                            <a href="/deletecomment/{{ comment.id }}/">❌</a>
                         {% endif %}
+                        <p >{{comment.creator}} {{ comment.date }}</p><br>
+                        <p >{{comment.text}}</p><br>
+                        <p class="">❤️ {{ comment.likes }}</p>
+                        <a class="btn-floating waves-effect waves-light red" href="/post/{{ post.id }}/{{ comment.id }}/like/">
+                            <i class="material-icons">favorite</i></a>
+                    <hr>
                     </li>
                 {% endif %}
                 {% empty %}

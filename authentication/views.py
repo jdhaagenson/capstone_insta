@@ -9,6 +9,7 @@ from django.views.generic import TemplateView, CreateView
 class CreateUser(CreateView):
     form_class = AddUserForm
     template_name = "signup.html"
+
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         return render(request, self.template_name, {"form": form})
@@ -29,8 +30,6 @@ class CreateUser(CreateView):
                 profile_pic=img,
             )
             obj.save()
-
-
             return HttpResponseRedirect(reverse('homepage'))
         return render(request, self.template_name, {'form': form})
 
@@ -48,7 +47,6 @@ def login_view(request):
                 return HttpResponseRedirect(
                     request.GET.get("next", reverse("homepage"))
                 )
-
     form = LoginForm
     return render(request, "login.html", {"form": form})
 

@@ -32,6 +32,12 @@ body {
     background-color: var(--color-primary);
     /*color: var(--font-color);*/
 }
+#body {
+    background-image: var(--bg);
+    background-color: var(--color-primary);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.4;
+}
 #feed {
     display: grid;
     grid-column: 0vw 120px 120px 100vw;
@@ -108,7 +114,7 @@ body {
     align-items: stretch;
     justify-content: left;
     align-content:space-around;
-    background-color: var(--color-primary);
+    /*background-color: var(--color-dark);*/
 }
 .comments {
     display: flex;
@@ -126,7 +132,7 @@ body {
     width: 40vw;
     margin-left: 150px;
     flex-direction: column;
-    background-color: var(--color-light);
+    background-color: var(--color-dark);
 }
 .like-link {
     text-decoration: none;
@@ -144,10 +150,11 @@ body {
 .card {
     width:500px;
     background-color: var(--color-secondary);
-    color: var(--color-dark) !important
+    color: var(--color-dark) !important;
 }
 .card-content {
     margin: 5px;
+    background-color: var(--color-secondary);
 }
 
 /* List of Users */
@@ -242,4 +249,8 @@ body {
     align-self: flex-start;
     /*font-family: '', cursive;*/
     color: var(--color-light);
+}
+li.comment {
+    margin: 15px;
+    /*padding-bottom: 10px;*/
 }

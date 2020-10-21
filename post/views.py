@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from .models import Post, Comment, PostLikes
 from notifications.models import Notification
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, SimplePostForm
 from django.views.generic import CreateView, TemplateView, DeleteView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -67,6 +67,32 @@ class PostFormView(CreateView):
                     )
             return HttpResponseRedirect(reverse('homepage'))
         return render(request, self.template_name, {'form': form})
+
+
+def simple_form_view(request):
+    if request.method == 'POST':
+        form = SimplePostForm(request.POST, request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+            Post.objects.create(
+                author=request.user,
+                location=data.get('location'),
+                caption=data.get('caption'),
+                photo=data.get('photo')
+            )
+            caption = data.get('caption')
+            if get_tags(caption) is not None:
+                for alerted_username in get_tags(caption):
+                    Notification.objects.create(
+                        message=caption,
+                        alert_for=InstaUser.objects.get(username=alerted_username),
+                        created_by=request.user
+                    )
+            # form.save()
+            return HttpResponseRedirect(reverse('homepage'))
+    form = SimplePostForm()
+    return render(request, 'upload.html', {'form': form})
+
 
 
 @login_required
@@ -171,8 +197,8 @@ def dislike_comment(request, postid, commentid):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','post_details'))
 
 
-class PostDelete(DeleteView):
-    model = Post
-    success_url = reverse_lazy('homepage')
-
+@login_required
+def delete_post(request, postid):
+    Post.objects.get(id=postid).delete()
+    return HttpResponseRedirect(reverse('homepage'))
 

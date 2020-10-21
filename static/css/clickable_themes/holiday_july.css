@@ -16,7 +16,7 @@
     --color-neutral: #b336e0;
     --font-color: #111;
     --color-mute: #575757;
-    --bg: url('/static/valentines.jpg');
+    --bg: url('/static/images/valentines.jpg');
 }
 .theme-christmas {
     --color-primary: #ec3535;
@@ -26,7 +26,7 @@
     --color-neutral: #191000;
     --font-color: #000000;
     --color-mute: #888888;
-    --bg: url('/static/xmas3.jpg');
+    --bg: url('/static/images/xmas3.jpg');
 }
 .theme-halloween {
     --bg: url("/static/images/halloween-bg.png");

@@ -1,7 +1,7 @@
 <html lang="en" id="htmltag" class="theme-vanilla">
 
 {% include './partials/head.html' %}
-<body>
+<body id="body">
     <div >
         {% include './blobmenu.html' %}
     </div>
@@ -21,8 +21,17 @@
                         </div>
                         <div class="card-action"></div>
                         <p class="post-likes">❤️ {{ post.likes }}</p>
+
+                        {% if request.user == post.author %}
+                        <div class="card-action">
+                            <a class="btn-floating pin-bottom waves-effect waves-light red" href="/deletepost/{{ post.id }}/">
+                                <i class="material-icons">delete</i></a><span> Delete Post</span>
+                        </div>
+                        {% endif %}
                         <a class="btn-floating halfway-fab waves-effect waves-light red" href="/post/{{ post.id }}/like/">
                             <i class="material-icons">favorite</i></a>
+
+
                         </div>
                     </div>
                     <span> <a href="/"><i class="material-icons">home</i>Back to Home</a></span>
@@ -31,7 +40,7 @@
             <div class="row">
                 <div class="col s6">
                     <div id="right" class="card">
-                        <div id="comments" class="card-content">
+                        <div id="comments">
                             {% include "./partials/comment.html" %}
                         </div>
                         <form class="card-panel" action="" method="post">
@@ -40,15 +49,24 @@
                                 <i class="material-icons prefix">add_comment</i>
                                 <input type={{form.text}}>
                                 <label placeholder="Comment here..." onclick="hidden" for={{form.text.id_for_label}}></label>
-                                <input class="waves-effect waves-light btn" type="submit" value="Submit">
+                                <input class="btn-block waves-effect waves-light btn" type="submit" value="Submit">
                             </div>
                     </form>
                     <div class="card-action">
                         {% if post.author == request.user %}
-                            <a href="/deleteallcomments/{{post.id}}/">❌ DELETE ALL COMMENTS</a>
+                            <a class="username" href="/deleteallcomments/{{post.id}}/"><button class="btn-floating waves-effect waves-light btn"><i class="material-icons prefix">delete</i></button></a><span>DELETE ALL COMMENTS</span>
                         {% endif %}
                     </div>
+
                 </div>
+                <div id="theme-container">
+            <h6>Holiday Themes</h6>
+            <button id="vanilla-button" class="theme-button" onclick="setTheme('theme-vanilla')"></button>
+            <button id="feb-button" class="theme-button bg-2" onclick="setTheme('theme-valentinesDay')"></button>
+            <button id="jul-button" class="theme-button bg-7" onclick="setTheme('theme-fourthOfJuly')"></button>
+            <button id="oct-button" class="theme-button bg-10" onclick="setTheme('theme-halloween')"></button>
+            <button id="dec-button" class="theme-button bg-12" onclick="setTheme('theme-christmas')"></button>
+        </div>
             </div>
         </div>
     </div>

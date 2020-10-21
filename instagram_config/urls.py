@@ -22,9 +22,7 @@ from post.views import *
 from authentication.views import *
 from notifications.views import *
 
-handler404 = 'post.views.handler404View'
-handler403 = 'post.views.handler403View'
-handler500 = 'post.views.handler500View'
+
 
 urlpatterns = [
     path('', PostFeedView.as_view(), name='homepage'),
@@ -39,15 +37,19 @@ urlpatterns = [
     path('post/<int:postid>/<int:commentid>/like/', like_comment),
     path('post/<int:postid>/<int:commentid>/dislike/', dislike_comment),
     path('post/<int:postid>/', PostDetailView, name='post_details'),
-    path('post/', PostFormView.as_view(), name='create_post'),
+    # path('post/', PostFormView.as_view(), name='create_post'),
+    path('post/', simple_form_view, name='create_post'),
     path('user/<int:userid>/unfollow/', unfollow_user, name='unfollow'),
     path('user/<int:userid>/follow/', follow_user, name='follow'),
     path('user/<int:user_id>/', ProfileView, name='profile'),
-    path('user/<int:user_id>/edit', edit_profile, name='editprofile'),
-    path('post/<int:postid>/delete', PostDelete.as_view()),
+    path('user/<int:user_id>/edit/', edit_profile, name='editprofile'),
+    path('deletepost/<int:postid>/', delete_post, name="deletepost"),
     path('notifications/', notification_view, name='notifications'),
     path('admin/', admin.site.urls), ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+handler404 = 'post.views.handler404View'
+handler403 = 'post.views.handler403View'
+handler500 = 'post.views.handler500View'
