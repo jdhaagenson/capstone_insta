@@ -14,10 +14,13 @@ class PostForm(ModelForm):
             'location',
             'author',
         ]
+
+
 class SimplePostForm(forms.Form):
     photo = forms.ImageField(widget=forms.ClearableFileInput)
     caption = forms.CharField(widget=forms.Textarea)
     location = forms.CharField(max_length=50,required=False)
+
 
 class CommentForm(ModelForm):
     class Meta:
