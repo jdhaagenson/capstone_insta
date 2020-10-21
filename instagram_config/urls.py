@@ -23,7 +23,6 @@ from authentication.views import *
 from notifications.views import *
 
 
-
 urlpatterns = [
     path('', PostFeedView.as_view(), name='homepage'),
     path('flt/', FollowPostView.as_view(), name='follow_feed'),
