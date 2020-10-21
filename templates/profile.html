@@ -12,26 +12,27 @@
   </head>
   <body>
     <div id="toolbar">{% include './blobmenu.html' %}</div>
-    <div id="profile-container">
+    <div id="profile-container" class="card">
         {% if profile.profile_pic.url is not None %}
             <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
-            <img class="profile-pic" src="{{ profile.profile_pic.url }}/" alt="photo" />
+            <img class="profile-pic card-image" src="{{ profile.profile_pic.url }}/" alt="photo" />
         {% else %}
-            <img class="profile-pic" src="/static/images/blank_user.jpg" alt="photo" />
             <h1 class="profile-header">{{ profile.display_name }}'s Profile</h1>
+            <img class="profile-pic card-image" src="/static/images/blank_user.jpg" alt="photo" />
         {% endif %}
-        <div id="profile">
-            <h6>About Me</h6>
-            <br />
+        <div id="profile" class="card">
+            <h4>About Me</h4>
+
             <p>{{ profile.bio }}</p>
-            <br />
-            <br />
+        <div id="buttons-profile">
             {% if user.id == profile.id %}
                 <a class="btn-floating btn-large waves-effect waves-light light-green" href="/user/{{ profile.id }}/edit"><i class="material-icons">edit</i></a>
-                <a class="btn-floating btn-large waves-effect waves-light light-green" href="/notifications/"><i class="material-icons">notifications_active</i></a>
-                <span class="new badge red" data-badge-caption="{{ notifications.count }}"></span>
+                <a id="middlebutton" class="btn-floating btn-large waves-effect waves-light light-green" href="/notifications/"><i class="material-icons">notifications_active</i></a>
+                <span id="badge" class="new badge red" data-badge-caption="{{ notifications.count }}"></span><br>
+                <a class="btn-floating btn-large waves-effect" href="/flt/"><i class="material-icons">burst_mode</i></a>
             {% endif %}
-            <br />
+        </div>
+
             {% if profile != request.user %}
                 {% if profile.is_authenticated %}
                     {% if profile not in user.followers.all %}
@@ -45,7 +46,7 @@
                 <p>Following: {{ profile.followers.count }}</p>
                 <ul>
                     {% for each in profile.followers.all %}
-                        <a href="/user/{{ each.id }}/">{{ each.username }}</a>
+                        <a href="/user/{{ each.id }}/">@{{ each.username }}</a>
                         <br />
                     {% endfor %}
                 </ul>
@@ -61,6 +62,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+    <div id="theme-container">
+            <h6>Holiday Themes</h6>
+            <button id="vanilla-button" class="theme-button" onclick="setTheme('theme-vanilla')"></button>
+            <button id="feb-button" class="theme-button bg-2" onclick="setTheme('theme-valentinesDay')"></button>
+            <button id="jul-button" class="theme-button bg-7" onclick="setTheme('theme-fourthOfJuly')"></button>
+            <button id="oct-button" class="theme-button bg-10" onclick="setTheme('theme-halloween')"></button>
+            <button id="dec-button" class="theme-button bg-12" onclick="setTheme('theme-christmas')"></button>
         </div>
 
         {% include './partials/scripts.html' %}

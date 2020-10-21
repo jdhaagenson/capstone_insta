@@ -27,10 +27,11 @@ h1, h2, h3, h4, h5, h6 {
     margin: auto;
     width: 20vw;
 }
-.profile {
+#profile {
     display: flex;
-    background-color: grey;
-    justify-content: left;
+    background-color: var(--color-light);
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 /* Buttons */
@@ -49,6 +50,7 @@ h1, h2, h3, h4, h5, h6 {
     display:flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
 }
 /* Post Gallery at the bottom of the page */
 .gallery {
@@ -63,4 +65,19 @@ h1, h2, h3, h4, h5, h6 {
     width: 100px;
     height: 100px;
     margin: 5px;
+}
+#buttons-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#badge{
+    margin-left: -10px;
+    z-index: 5;
+    width: 20px;
+    min-width: 2rem;
+}
+#middlebutton{
+    margin-left: 15px;
 }
