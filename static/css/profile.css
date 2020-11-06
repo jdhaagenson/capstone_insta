@@ -55,13 +55,14 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+    padding: 20px;
 }
 /* Post Gallery at the bottom of the page */
 .gallery {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: baseline;
+    justify-content: flex-start;
     align-items: center;
 }
 .gallery-photo {
@@ -69,6 +70,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100px;
     height: 100px;
     margin: 5px;
+    /*justify-content: center;*/
 }
 #buttons-profile {
     display: flex;
@@ -84,4 +86,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 #middlebutton{
     margin-left: 15px;
+}
+.followpic {
+    width:50px;
+
+}
+#following_section {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+}
+#following_section a {
+    display: block;
 }

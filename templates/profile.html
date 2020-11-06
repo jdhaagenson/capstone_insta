@@ -44,10 +44,13 @@
             {% endif %}
                 <br />
                 <p>Following: {{ profile.followers.count }}</p>
-                <ul>
+                <ul id="following_section">
                     {% for each in profile.followers.all %}
-                        <a href="/user/{{ each.id }}/">@{{ each.username }}</a>
-                        <br />
+                        <div>
+                            <img class="followpic" src="{{ each.profile_pic.url }}" alt="profile">
+                            <a href="/user/{{ each.id }}/">@{{ each.username }}</a>
+                            <br />
+                        </div>
                     {% endfor %}
                 </ul>
                 <p>Posts: {{ posts.count }}</p>
