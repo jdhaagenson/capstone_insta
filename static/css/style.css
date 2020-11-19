@@ -8,7 +8,8 @@
     --font-color: #1e1e1e;
     --color-neutral: #ba8982;
     --color-mute: #505050;
-    --bg: url('/static/defaultbg.jpg');
+    --bg: url('/static/defaultbg.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
 }
 
 /* font-family: 'Open Sans', sans-serif; */
@@ -29,12 +30,16 @@ body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.4;
     background-image: var(--bg);
+    background-attachment: fixed;
     background-color: var(--color-primary);
     /*color: var(--font-color);*/
 }
+
 #body {
-    background-image: var(--bg);
+    text-align: center;
+    background-image: var(--bg) no-repeat center center / cover;
     background-color: var(--color-primary);
+    background-attachment: fixed;
     font-family: 'Open Sans', sans-serif;
     line-height: 1.4;
 }
@@ -42,6 +47,7 @@ body {
     display: grid;
     grid-column: 0vw 120px 120px 100vw;
     background-image: var(--bg);
+    background-attachment: fixed;
     border-left: 10px solid var(--color-secondary);
 
 }
@@ -162,6 +168,7 @@ body {
     display: flex;
     flex-direction: column;
     background-image: var(--bg);
+    background-attachment: fixed;
     border-left: 10px solid var(--color-primary);
     padding-left: 20px;
 }
