@@ -1,0 +1,11 @@
+/* Christmas Theme */
+.theme-christmas {
+    --color-primary: #ec3535;
+    --color-secondary: #02af02;
+    --color-light: #9fd95d;
+    --color-dark: #19266b;
+    --color-neutral: #191000;
+    --font-color: #000000;
+    --color-mute: #888888;
+    --bg: url('/static/images/dec-theme-button.png');
+}

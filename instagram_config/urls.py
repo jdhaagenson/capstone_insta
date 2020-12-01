@@ -14,13 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from instauser.views import *
 from post.views import *
 from authentication.views import *
 from notifications.views import *
+from django.conf.urls import url
+from django.views.static import serve
+
 
 
 urlpatterns = [
@@ -33,8 +36,8 @@ urlpatterns = [
     path('deletecomment/<int:commentid>/', delete_comment, name='delete_specific_comment'),
     path('post/<int:postid>/like/', like_post, name='like'),
     path('post/<int:postid>/dislike/', dislike_post, name='dislike'),
-    path('post/<int:postid>/<int:commentid>/like/', like_comment),
-    path('post/<int:postid>/<int:commentid>/dislike/', dislike_comment),
+    path('post/<int:postid>/<int:commentid>/like/', like_comment, name="like_comment"),
+    path('post/<int:postid>/<int:commentid>/dislike/', dislike_comment, name="dislike_comment"),
     path('post/<int:postid>/', PostDetailView, name='post_details'),
     # path('post/', PostFormView.as_view(), name='create_post'),
     path('post/', simple_form_view, name='create_post'),
@@ -44,10 +47,13 @@ urlpatterns = [
     path('user/<int:user_id>/edit/', edit_profile, name='editprofile'),
     path('deletepost/<int:postid>/', delete_post, name="deletepost"),
     path('notifications/', notification_view, name='notifications'),
-    path('admin/', admin.site.urls), ]
+    path('admin/', admin.site.urls),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'post.views.handler404View'
 handler403 = 'post.views.handler403View'

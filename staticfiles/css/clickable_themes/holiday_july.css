@@ -1,0 +1,40 @@
+.theme-fourthOfJuly {
+    --color-primary: #0022dd;
+    --color-secondary: #b10303;
+    --color-light: #ff5757;
+    --color-dark: #0a0a72;
+    --color-neutral: #acabab;
+    --font-color: #2a2a2a;
+    --color-mute: #575757;
+    --bg: url('/static/images/jul-theme-button.jpg');
+}
+.theme-valentinesDay {
+    --color-primary: #8a0a2c;
+    --color-secondary: #e24767;
+    --color-light: #e4cdd3;
+    --color-dark: #341847;
+    --color-neutral: #b336e0;
+    --font-color: #111;
+    --color-mute: #575757;
+    --bg: url('/static/images/valentines.jpg');
+}
+.theme-christmas {
+    --color-primary: #ec3535;
+    --color-secondary: #086508;
+    --color-light: #9fd95d;
+    --color-dark: #19266b;
+    --color-neutral: #191000;
+    --font-color: #000000;
+    --color-mute: #888888;
+    --bg: url('/static/images/xmas3.jpg');
+}
+.theme-halloween {
+    --bg: url("/static/images/halloween-bg.png");
+    --color-primary: #601368;
+    --color-secondary: #e86f00;
+    --color-light: #64d77d;
+    --color-dark: #0d0a09;
+    --color-neutral: #191000;
+    --font-color: #ffae19;
+    --color-mute: #524e47;
+}
