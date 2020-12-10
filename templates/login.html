@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/css/login.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>InstaDay | Login</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+</style>    <link rel="stylesheet" href="/static/css/login.css">
 </head>
 <body>
-    <div class="loginbox container-fluid">
-        <h1>Login</h1>
-        <div class="error"></div>
-        <form action="" method="POST">
+    <div class="landing">
+        <div class="loginbox left">
+            <h1 id="logo">Instaday</h1>
+        </div>
+        <div class="loginbox right">
+            <h3>Welcome Back!</h3>
+            <h1>Login</h1>
+            <div class="error"></div>
+            <form action="" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Login" />
         </form>
-        <div id="signup">
-        <p style="display:inline;">New? Click </p><a style="display:inline;" href="/signup/">here</a><p style="display:inline;"> to sign up!</p>
+            <div id="signup">
+                <p style="display:inline;">New? Click </p><a style="display:inline;" href="/signup/">here</a><p style="display:inline;"> to sign up!</p>
+            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

@@ -1,20 +1,51 @@
 body {
     text-align: center;
+    font-family: 'Cookie', cursive;
+}
+
+#logo {
+    font-family: 'Cookie', cursive;
+    font-size: 90px;
+}
+.landing {
+    font-family: 'Cookie', cursive;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    height: 400px;
+    max-width: 700px;
+    place-items: stretch;
+    position: relative;
+    width: 100%;
+    top: 100px;
+    background-color: whitesmoke;
+    margin: auto;
+
 }
 .loginbox {
-     position: relative;
-    /*background-color: white;*/
+    display: flow-root;
+    height: 250px;
+    place-items: stretch;
+    position: relative;
     width: 100%;
-    place-self: center;
     max-width: 330px;
-    top:100px;
+    /*top:100px;*/
     background-color: whitesmoke;
-    border: 10px solid thistle ;
-    box-shadow: 1px 1px 5px black;
+    /*border: 10px solid thistle ;*/
+    /*box-shadow: 1px 1px 5px black;*/
     padding: 15px;
-    font-family: "Helvetica";
+    font-family: Helvetica;
     text-align: center;
     margin: auto;
+}
+.loginbox.left {
+    /*background-image:*/
+}
+.left {
+    float: left;!important;
+}
+.right {
+    float: right; !important;
 }
 .error {
     color: red;
