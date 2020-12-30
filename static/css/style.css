@@ -1,16 +1,16 @@
-@import url('/static/css/clickable_themes/holiday_july.css');
+@import url('/static/css/clickable_themes/dark.css');
 
-.theme-vanilla {
-    --color-primary: #8298ba;
-    --color-secondary: #efa184;
-    --color-light: #bfeaee;
-    --color-dark: #365687;
-    --font-color: #1e1e1e;
-    --color-neutral: #ba8982;
-    --color-mute: #505050;
-    --bg: url('/static/defaultbg.jpg') no-repeat center center / cover;
-    background-attachment: fixed;
-}
+/*.theme-vanilla {*/
+/*    --color-primary: #8298ba;*/
+/*    --color-secondary: #efa184;*/
+/*    --color-light: #bfeaee;*/
+/*    --color-dark: #365687;*/
+/*    --font-color: #1e1e1e;*/
+/*    --color-neutral: #ba8982;*/
+/*    --color-mute: #505050;*/
+/*    --bg: url('/static/images/theme_vanilla.jpg') no-repeat center center / cover;*/
+/*    background-attachment: fixed;*/
+/*}*/
 
 /* font-family: 'Open Sans', sans-serif; */
 /* font-family: 'Sansita Swashed', cursive; */
@@ -48,7 +48,7 @@ body {
     grid-column: 0vw 120px 120px 100vw;
     background-image: var(--bg);
     background-attachment: fixed;
-    border-left: 10px solid var(--color-secondary);
+    /*border-left: 10px solid var(--color-secondary);*/
 
 }
 
@@ -169,7 +169,7 @@ body {
     flex-direction: column;
     background-image: var(--bg);
     background-attachment: fixed;
-    border-left: 10px solid var(--color-primary);
+    /*border-left: 10px solid var(--color-primary);*/
     padding-left: 20px;
 }
 #list-users img, p {

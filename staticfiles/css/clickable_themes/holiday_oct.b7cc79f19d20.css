@@ -1,0 +1,11 @@
+/* Halloween Theme */
+.theme-halloween {
+  --color-primary: #0d0a09;
+  --color-secondary: #e59400;
+  --color-light: #e5e5e5;
+  --color-dark: #0d0a09;
+  --color-neutral: #191000;
+  --font-color: #ffae19;
+  --color-mute: #b27300;
+  --background-image: url("/static/images/halloween-bg.6a2e151c1735.png");
+}

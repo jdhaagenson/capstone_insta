@@ -1,0 +1,27 @@
+body {
+  text-align: center;
+}
+.loginbox {
+  position: relative;
+  width: 100%;
+  place-self: center;
+  max-width: 330px;
+  top: 100px;
+  background-image: url("../images/login_holidays.850afa89fc46.png");
+  border: 10px solid thistle;
+  box-shadow: 1px 1px 5px black;
+  padding: 15px;
+  font-family: "Helvetica";
+  text-align: center;
+  margin: auto;
+}
+.error {
+  color: red;
+}
+form {
+  max-width: 330px;
+  padding: 15px;
+}
+#signup {
+  margin: 10px;
+}

@@ -7,7 +7,7 @@ body {
   place-self: center;
   max-width: 330px;
   top: 100px;
-  background-color: whitesmoke;
+  background-image: url('../images/login_holidays.png');
   border: 10px solid thistle;
   box-shadow: 1px 1px 5px black;
   padding: 15px;

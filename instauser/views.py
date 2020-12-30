@@ -27,8 +27,8 @@ def unfollow_user(request, userid):
 
 
 @login_required
-def ProfileView(request, user_id):
-    profile = InstaUser.objects.get(id=user_id)
+def ProfileView(request, userid):
+    profile = InstaUser.objects.get(id=userid)
     posts = models.Post.objects.filter(author=profile.id)
     user_following = profile.followers.all()
     following_list = list(user_following)
@@ -46,8 +46,8 @@ def ProfileView(request, user_id):
 
 
 @login_required
-def edit_profile(request, user_id):
-    edit = InstaUser.objects.get(id=user_id)
+def edit_profile(request, userid):
+    edit = InstaUser.objects.get(id=userid)
     if request.method == "POST":
         form = EditProfileForm(request.POST, request.FILES)
         if form.is_valid():

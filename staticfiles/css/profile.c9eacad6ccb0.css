@@ -1,0 +1,101 @@
+@import url("/static/css/clickable_themes/holiday_july.52ee8adcbfd3.css");
+
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.4rem;
+}
+/* General Info */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sansita Swashed', cursive;
+}
+#body{
+    background-image: var(--bg);
+
+}
+/* Profile */
+#profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+#profile-container h3 {
+    font-size:1em;
+    font-weight: light;
+    justify-self: left;
+}
+.profile-pic {
+    border: 2px solid grey;
+    margin: auto;
+    width: 20vw;
+}
+#profile {
+    display: flex;
+    background-color: var(--color-light);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+/* Buttons */
+#follow {
+    background: linear-gradient(lightgray, darkgray);
+    height:2em;
+    width:10em;
+}
+#unfollow {
+    background: linear-gradient(darkgray, lightgray);
+    height: 2em;
+    width: 10em;
+}
+/* Post */
+#post-container {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+/* Post Gallery at the bottom of the page */
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.gallery-photo {
+    border: 1px solid gray;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    /*justify-content: center;*/
+}
+#buttons-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#badge{
+    margin-left: -10px;
+    z-index: 5;
+    width: 20px;
+    min-width: 2rem;
+}
+#middlebutton{
+    margin-left: 15px;
+}
+.followpic {
+    width:50px;
+
+}
+#following_section {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+}
+#following_section a {
+    display: block;
+}

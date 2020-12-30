@@ -10,6 +10,7 @@ from django.contrib.auth import get_user
 from django.urls import reverse_lazy
 from helpers.helper_functions import get_tags
 from django.http import JsonResponse
+from instauser.forms import ThemeForm
 
 
 def handler404View(request, exception, template_name="404.html"):
@@ -202,3 +203,18 @@ def delete_post(request, postid):
     Post.objects.get(id=postid).delete()
     return HttpResponseRedirect(reverse('homepage'))
 
+
+def permanent_theme_change(request, userid):
+    user = InstaUser.objects.get(userid)
+    if request.method == 'POST':
+        form = ThemeForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user.theme = data.get('theme')
+            return HttpResponseRedirect(reverse('profile'))
+    form = ThemeForm()
+    return render(request, 'edit.html', {'user': user, 'form': form, })
+
+
+# TODO: FINISH PERMANENT THEME CHANGE FUNCTION VIEW
+# TODO: GET RID OF THE LINES ON THE EDGES OF THE FEED, DONT NEED WITH SEAMLESS BACKGROUNDS
